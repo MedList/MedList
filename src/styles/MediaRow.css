@@ -1,0 +1,19 @@
+.media-row {
+    margin-bottom: 30px;
+  }
+  
+  .media-row h2 {
+    color: white;
+    margin-left: 20px;
+  }
+  
+  .media-scroller {
+    display: flex;
+    gap: 15px;
+    overflow-x: auto; 
+    padding: 20px;
+  }
+  
+  .media-scroller::-webkit-scrollbar {
+    display: none;
+  }

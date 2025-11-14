@@ -1,0 +1,35 @@
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 10% 0px 5%;
+  }
+  
+  .header-title-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 350px;
+  }
+   
+  .header-title {
+    font-size: 4rem;
+    font-weight: 400;
+  }
+   
+  .header-title-logo {
+    width: 100px;
+    height: 100px;
+  }
+   
+  .header-ad-container {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .header-ad {
+    width: 400px;
+    height: 125px;
+    border: 2px black solid;
+    border-radius: 15px;
+  }

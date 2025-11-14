@@ -1,0 +1,27 @@
+
+.stars-outer {
+    position: relative;
+    display: inline-block;
+    font-family: 'Times New Roman', Times, serif; 
+  }
+  
+  .stars-outer::before {
+    content: '★★★★★';
+    color: #ccc; 
+    font-size: 1.25rem;
+  }
+  
+  .stars-inner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 0; 
+  }
+  
+  .stars-inner::before {
+    content: '★★★★★';
+    color: #f8c822; 
+    font-size: 1.25rem;
+  }
