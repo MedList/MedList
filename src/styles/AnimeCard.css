@@ -1,0 +1,94 @@
+.anime-card-horizontal {
+    display: flex;
+    height: 250px;
+    background: #200527;
+    border: 3px solid #b3004a;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 20px;
+  }
+  
+  .anime-card-image {
+    width: 180px;
+    height: 100%;
+    object-fit: cover;
+    flex-shrink: 0;
+  }
+  
+  .anime-card-content {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+  
+  .anime-card-title {
+    font-size: 1.8rem;
+    margin: 0 0 5px 0;
+    color: white;
+  }
+  
+  .anime-card-meta {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 10px;
+  }
+  
+  .anime-year {
+    color: #ccc;
+    font-size: 1rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+  }
+  
+  .anime-genre {
+    background-color: #b3004a;
+    color: white;
+    padding: 4px 12px;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  
+  .anime-card-description {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #ccc;
+    flex: 1;
+    overflow: hidden;
+  }
+  
+  .anime-card-bottom-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 15px;
+  }
+  
+  .anime-rating-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .save-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: white;
+    display: flex;
+    align-items: center;
+    font-size: 1.1rem;
+  }
+  
+  .save-icon {
+    width: 24px;
+    height: 24px;
+    margin-left: 8px;
+    fill: none;
+    stroke: white;
+    stroke-width: 2;
+  }

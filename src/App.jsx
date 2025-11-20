@@ -3,7 +3,6 @@ import { Routes, Route } from 'react-router-dom';
 
 import HomePage from './pages/Home.jsx'; 
 import Anime from './pages/Anime.jsx';
-import Manga from './pages/Manga.jsx';
 import Shows from './pages/Shows.jsx';
 import Movies from './pages/Movies.jsx'; 
 import Navbar from './components/Navbar';
@@ -19,7 +18,6 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/anime" element={<Anime />} />
-          <Route path="/manga" element={<Manga />} />
           <Route path="/movies" element={<Movies />} />
           <Route path="/shows" element={<Shows />} />
         </Routes>

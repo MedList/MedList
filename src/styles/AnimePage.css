@@ -1,0 +1,9 @@
+.anime-page-container {
+    display: flex;
+    padding: 30px 5%; 
+    gap: 30px;
+  }
+  
+  .anime-list-container {
+    flex: 1; 
+  }

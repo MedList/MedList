@@ -1,5 +1,7 @@
 .media-row {
     margin-bottom: 30px;
+    margin-left:2%;
+    margin-right:2%;
   }
   
   .media-row h2 {
@@ -13,7 +15,23 @@
     overflow-x: auto; 
     padding: 20px;
   }
-  
+
+
   .media-scroller::-webkit-scrollbar {
-    display: none;
+    height: 12px; 
+  }
+
+  .media-scroller::-webkit-scrollbar-track {
+    background: #200527; 
+    border-radius: 10px;
+  }
+
+  .media-scroller::-webkit-scrollbar-thumb {
+    background: #b3004a; 
+    border-radius: 10px;
+    border: 2px solid #200527; 
+  }
+
+  .media-scroller::-webkit-scrollbar-thumb:hover {
+    background: #d41c61; 
   }

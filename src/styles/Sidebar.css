@@ -1,0 +1,131 @@
+.sidebar-container {
+    width: 300px;
+    flex-shrink: 0;
+    padding-right: 30px;
+    border-right: 2px solid #b3004a;
+  }
+  
+  .search-input {
+    width: 100%;
+    padding: 12px 15px;
+    font-size: 1.1rem;
+    background: #200527;
+    border: 3px solid #b3004a;
+    border-radius: 8px;
+    color: white;
+    margin-bottom: 20px;
+  }
+  
+  .genre-select {
+    width: 100%;
+    padding: 12px 15px;
+    font-size: 1.1rem;
+    background: #200527;
+    border: 3px solid #b3004a;
+    border-radius: 8px;
+    color: white;
+    margin-bottom: 20px;
+    cursor: pointer;
+    outline: none;
+  }
+  
+  .genre-select option {
+    background: #200527;
+    color: white;
+  }
+  
+  .sidebar-section-title {
+    font-size: 1.3rem;
+    color: white;
+    margin-bottom: 10px;
+  }
+  
+  .filter-buttons {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 25px;
+  }
+  
+  .filter-btn {
+    padding: 0.8rem 1.5rem;
+    font-family: sans-serif;
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #000;
+    border: none;
+    cursor: pointer;
+    background: repeating-linear-gradient(
+      -45deg,
+      #b3004a,
+      #b3004a 10px,
+      #c82a6e 10px,
+      #c82a6e 20px
+    );
+    border-radius: 8px;
+    box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.25), inset 0 -1px 1px rgba(0, 0, 0, 0.25);
+  }
+  
+  .popular-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 25px 0;
+    border: 2px solid #b3004a;
+    border-radius: 8px;
+    padding: 15px;
+  }
+  
+  .popular-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+  }
+  
+  .rating-header {
+    display: flex;
+    justify-content: space-between;
+    color: white;
+    margin-bottom: 10px;
+    font-weight: bold;
+  }
+  
+  .slider-container {
+    margin-bottom: 25px;
+  }
+  
+  input[type=range] {
+    -webkit-appearance: none;
+    width: 100%; 
+    background: transparent; 
+  }
+  
+  input[type=range]:focus {
+    outline: none; 
+  }
+  
+  input[type=range]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 10px;
+    cursor: pointer;
+    background: #200527;
+    border-radius: 5px;
+    border: 2px solid #b3004a;
+  }
+  
+  input[type=range]::-webkit-slider-thumb {
+    height: 24px;
+    width: 24px;
+    border-radius: 50%;
+    background: #b3004a;
+    border: 2px solid white;
+    cursor: pointer;
+    -webkit-appearance: none;
+    margin-top: -9px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.5);
+    transition: transform 0.1s ease;
+  }
+  
+  input[type=range]::-webkit-slider-thumb:hover {
+    transform: scale(1.2);
+  }
