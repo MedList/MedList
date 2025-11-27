@@ -1,5 +1,6 @@
 import React from 'react';
 import StarRating from './StarRating';
+import DoubleRangeSlider from './DoubleRangeSlider'; 
 import '../styles/Sidebar.css';
 
 function AnimeSidebar({ 
@@ -9,9 +10,7 @@ function AnimeSidebar({
   searchQuery, 
   onSearchChange, 
   onGenreChange, 
-  minRating, 
   onRatingChange,
-  minYear,
   onYearChange,
   onSortChange
 }) {
@@ -46,35 +45,31 @@ function AnimeSidebar({
         </select>
       </div>
 
-      <div className="slider-container">
-        <div className="rating-header">
-          <span>Min Rating:</span>
-          <span style={{ color: '#b3004a' }}>{minRating}+</span>
-        </div>
-        <input 
-          type="range" 
-          min="0" 
-          max="10" 
-          step="0.5" 
-          value={minRating}
-          onChange={(e) => onRatingChange(Number(e.target.value))}
+      
+      <div style={{ marginBottom: '30px' }}>
+        <DoubleRangeSlider 
+          title="Rating Range"
+          min={0}
+          max={10}
+          step={0.5}
+          initialMin={0}
+          initialMax={10}
+          onChange={onRatingChange}
         />
       </div>
 
-      <div className="slider-container">
-        <div className="rating-header">
-          <span>Released after:</span>
-          <span style={{ color: '#b3004a' }}>{minYear}</span>
-        </div>
-        <input 
-          type="range" 
-          min="2000" 
-          max="2024" 
-          step="1" 
-          value={minYear}
-          onChange={(e) => onYearChange(Number(e.target.value))}
+      <div style={{ marginBottom: '30px' }}>
+        <DoubleRangeSlider 
+          title="Year Range"
+          min={1990}
+          max={2024}
+          step={1}
+          initialMin={1990}
+          initialMax={2024}
+          onChange={onYearChange}
         />
       </div>
+
 
       <div>
         <h3 className="sidebar-section-title">Popular Anime:</h3>

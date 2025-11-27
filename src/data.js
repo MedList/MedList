@@ -143,7 +143,8 @@ export const showData = [
     imageUrl: '/random-banner.jpg',
     description: 'Lorem ipsum dolor sit amet.',
     rating: '8.5',
-    releaseYear: 2020
+    releaseYear: 2020,
+    genre: 'Drama'
   },
   {
     id: 2,
@@ -151,7 +152,8 @@ export const showData = [
     imageUrl: '/random-banner.jpg',
     description: 'Lorem ipsum dolor sit amet.',
     rating: '9.3',
-    releaseYear: 2023
+    releaseYear: 2023,
+    genre: 'Comedy'
   },
   {
     id: 3,
@@ -159,7 +161,8 @@ export const showData = [
     imageUrl: '/random-banner.jpg',
     description: 'Lorem ipsum dolor sit amet.',
     rating: '7.8',
-    releaseYear: 2019
+    releaseYear: 2019,
+    genre: 'Action'
   },
   {
     id: 4,
@@ -167,7 +170,8 @@ export const showData = [
     imageUrl: '/random-banner.jpg',
     description: 'Lorem ipsum dolor sit amet.',
     rating: '8.0',
-    releaseYear: 2021
+    releaseYear: 2021,
+    genre: 'Sci-Fi'
   },
   {
     id: 5,
@@ -175,7 +179,8 @@ export const showData = [
     imageUrl: '/random-banner.jpg',
     description: 'Lorem ipsum dolor sit amet.',
     rating: '9.6',
-    releaseYear: 2024
+    releaseYear: 2024,
+    genre: 'Drama'
   },
   {
     id: 6,
@@ -183,7 +188,8 @@ export const showData = [
     imageUrl: '/random-banner.jpg',
     description: 'Lorem ipsum dolor sit amet.',
     rating: '7.3',
-    releaseYear: 2015
+    releaseYear: 2015,
+    genre: 'Comedy'
   },
   {
     id: 7,
@@ -191,7 +197,8 @@ export const showData = [
     imageUrl: '/random-banner.jpg',
     description: 'Lorem ipsum dolor sit amet.',
     rating: '8.7',
-    releaseYear: 2022
+    releaseYear: 2022,
+    genre: 'Action'
   },
   {
     id: 8,
@@ -199,7 +206,8 @@ export const showData = [
     imageUrl: '/random-banner.jpg',
     description: 'Lorem ipsum dolor sit amet.',
     rating: '9.1',
-    releaseYear: 2018
+    releaseYear: 2018,
+    genre: 'Mystery'
   },
   {
     id: 9,
@@ -207,7 +215,8 @@ export const showData = [
     imageUrl: '/random-banner.jpg',
     description: 'Lorem ipsum dolor sit amet.',
     rating: '7.6',
-    releaseYear: 2017
+    releaseYear: 2017,
+    genre: 'Sci-Fi'
   },
   {
     id: 10,
@@ -215,7 +224,8 @@ export const showData = [
     imageUrl: '/random-banner.jpg',
     description: 'Lorem ipsum dolor sit amet.',
     rating: '8.4',
-    releaseYear: 2020
+    releaseYear: 2020,
+    genre: 'Drama'
   },
   {
     id: 11,
@@ -223,7 +233,8 @@ export const showData = [
     imageUrl: '/random-banner.jpg',
     description: 'Lorem ipsum dolor sit amet.',
     rating: '9.4',
-    releaseYear: 2023
+    releaseYear: 2023,
+    genre: 'Comedy'
   },
   {
     id: 12,
@@ -231,7 +242,8 @@ export const showData = [
     imageUrl: '/random-banner.jpg',
     description: 'Lorem ipsum dolor sit amet.',
     rating: '8.2',
-    releaseYear: 2021
+    releaseYear: 2021,
+    genre: 'Action'
   },
   {
     id: 13,
@@ -239,7 +251,8 @@ export const showData = [
     imageUrl: '/random-banner.jpg',
     description: 'Lorem ipsum dolor sit amet.',
     rating: '7.0',
-    releaseYear: 2016
+    releaseYear: 2016,
+    genre: 'Mystery'
   },
   {
     id: 14,
@@ -247,7 +260,8 @@ export const showData = [
     imageUrl: '/random-banner.jpg',
     description: 'Lorem ipsum dolor sit amet.',
     rating: '9.8',
-    releaseYear: 2024
+    releaseYear: 2024,
+    genre: 'Drama'
   },
   {
     id: 15,
@@ -255,7 +269,8 @@ export const showData = [
     imageUrl: '/random-banner.jpg',
     description: 'Lorem ipsum dolor sit amet.',
     rating: '8.8',
-    releaseYear: 2022
+    releaseYear: 2022,
+    genre: 'Sci-Fi'
   }
 ];
 
@@ -266,7 +281,8 @@ export const movieData = [
     imageUrl: '/random-banner.jpg',
     description: 'Lorem ipsum dolor sit amet.',
     rating: '9.7',
-    releaseYear: 2010
+    releaseYear: 2010,
+    genre: 'Action'
   },
   {
     id: 2,
@@ -274,7 +290,8 @@ export const movieData = [
     imageUrl: '/random-banner.jpg',
     description: 'Lorem ipsum dolor sit amet.',
     rating: '7.4',
-    releaseYear: 2015
+    releaseYear: 2015,
+    genre: 'Comedy'
   },
   {
     id: 3,
@@ -282,7 +299,8 @@ export const movieData = [
     imageUrl: '/random-banner.jpg',
     description: 'Lorem ipsum dolor sit amet.',
     rating: '8.6',
-    releaseYear: 2020
+    releaseYear: 2020,
+    genre: 'Drama'
   },
   {
     id: 4,
@@ -290,7 +308,8 @@ export const movieData = [
     imageUrl: '/random-banner.jpg',
     description: 'Lorem ipsum dolor sit amet.',
     rating: '9.2',
-    releaseYear: 2023
+    releaseYear: 2023,
+    genre: 'Sci-Fi'
   },
   {
     id: 5,
@@ -298,7 +317,8 @@ export const movieData = [
     imageUrl: '/random-banner.jpg',
     description: 'Lorem ipsum dolor sit amet.',
     rating: '7.9',
-    releaseYear: 2018
+    releaseYear: 2018,
+    genre: 'Action'
   },
   {
     id: 6,
@@ -306,7 +326,8 @@ export const movieData = [
     imageUrl: '/random-banner.jpg',
     description: 'Lorem ipsum dolor sit amet.',
     rating: '8.1',
-    releaseYear: 2016
+    releaseYear: 2016,
+    genre: 'Comedy'
   },
   {
     id: 7,
@@ -314,7 +335,8 @@ export const movieData = [
     imageUrl: '/random-banner.jpg',
     description: 'Lorem ipsum dolor sit amet.',
     rating: '9.0',
-    releaseYear: 2022
+    releaseYear: 2022,
+    genre: 'Drama'
   },
   {
     id: 8,
@@ -322,7 +344,8 @@ export const movieData = [
     imageUrl: '/random-banner.jpg',
     description: 'Lorem ipsum dolor sit amet.',
     rating: '7.7',
-    releaseYear: 2014
+    releaseYear: 2014,
+    genre: 'Horror'
   },
   {
     id: 9,
@@ -330,7 +353,8 @@ export const movieData = [
     imageUrl: '/random-banner.jpg',
     description: 'Lorem ipsum dolor sit amet.',
     rating: '8.3',
-    releaseYear: 2019
+    releaseYear: 2019,
+    genre: 'Sci-Fi'
   },
   {
     id: 10,
@@ -338,7 +362,8 @@ export const movieData = [
     imageUrl: '/random-banner.jpg',
     description: 'Lorem ipsum dolor sit amet.',
     rating: '9.5',
-    releaseYear: 2024
+    releaseYear: 2024,
+    genre: 'Action'
   },
   {
     id: 11,
@@ -346,7 +371,8 @@ export const movieData = [
     imageUrl: '/random-banner.jpg',
     description: 'Lorem ipsum dolor sit amet.',
     rating: '7.2',
-    releaseYear: 2013
+    releaseYear: 2013,
+    genre: 'Comedy'
   },
   {
     id: 12,
@@ -354,7 +380,8 @@ export const movieData = [
     imageUrl: '/random-banner.jpg',
     description: 'Lorem ipsum dolor sit amet.',
     rating: '8.8',
-    releaseYear: 2021
+    releaseYear: 2021,
+    genre: 'Horror'
   },
   {
     id: 13,
@@ -362,7 +389,8 @@ export const movieData = [
     imageUrl: '/random-banner.jpg',
     description: 'Lorem ipsum dolor sit amet.',
     rating: '9.9',
-    releaseYear: 2024
+    releaseYear: 2024,
+    genre: 'Drama'
   },
   {
     id: 14,
@@ -370,7 +398,8 @@ export const movieData = [
     imageUrl: '/random-banner.jpg',
     description: 'Lorem ipsum dolor sit amet.',
     rating: '7.1',
-    releaseYear: 2012
+    releaseYear: 2012,
+    genre: 'Action'
   },
   {
     id: 15,
@@ -378,6 +407,7 @@ export const movieData = [
     imageUrl: '/random-banner.jpg',
     description: 'Lorem ipsum dolor sit amet.',
     rating: '8.0',
-    releaseYear: 2017
+    releaseYear: 2017,
+    genre: 'Sci-Fi'
   }
 ];

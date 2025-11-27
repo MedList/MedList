@@ -3,11 +3,12 @@ import { Routes, Route } from 'react-router-dom';
 
 import HomePage from './pages/Home.jsx'; 
 import Anime from './pages/Anime.jsx';
-import Shows from './pages/Shows.jsx';
-import Movies from './pages/Movies.jsx'; 
+import Movies from './pages/Movies.jsx';
+import Shows from './pages/Shows.jsx'; 
+import DetailsPage from './pages/DetailsPage.jsx'; 
+
 import Navbar from './components/Navbar';
 import Header from './components/Header';
-
 
 function App() {
   return (
@@ -20,6 +21,8 @@ function App() {
           <Route path="/anime" element={<Anime />} />
           <Route path="/movies" element={<Movies />} />
           <Route path="/shows" element={<Shows />} />
+          
+          <Route path="/details/:category/:id" element={<DetailsPage />} />
         </Routes>
       </main>
     </div>

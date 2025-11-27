@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
-import StarRating from './StarRating'; 
+import StarRating from './StarRating';
+import { useNavigate } from 'react-router-dom';
 import '../styles/MediaCard.css';
 
-function MediaCard({ item }) {
+function MediaCard({ item, category }) {
   const [isHovering, setIsHovering] = useState(false);
   const [position, setPosition] = useState({ x: 0, y: 0 });
+  const navigate = useNavigate();
 
   const handleMouseEnter = () => {
     setIsHovering(true);
@@ -15,12 +17,15 @@ function MediaCard({ item }) {
   };
 
   const handleMouseMove = (e) => {
-
     const cardRect = e.currentTarget.getBoundingClientRect();
     setPosition({
-      x: cardRect.right + 50, 
-      y: cardRect.top + (cardRect.height / 2) 
+      x: cardRect.right + 50,
+      y: cardRect.top + (cardRect.height / 2)
     });
+  };
+
+  const handleClick = () => {
+    navigate(`/details/${category}/${item.id}`);
   };
 
   return (
@@ -29,7 +34,8 @@ function MediaCard({ item }) {
         className="media-card"
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
-        onMouseMove={handleMouseMove} 
+        onMouseMove={handleMouseMove}
+        onClick={handleClick}
       >
         <img src={item.imageUrl} alt={item.title} />
       </div>
