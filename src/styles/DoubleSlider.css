@@ -1,7 +1,7 @@
 .double-slider-wrapper {
     position: relative;
     width: 100%;
-    height: 20px; 
+    height: 50px; 
     margin-top: 10px;
   }
   
@@ -10,15 +10,15 @@
     justify-content: space-between;
     align-items: center;
     margin-bottom: 15px;
-    color: white;
+    color: var(--text-primary);
     font-weight: bold;
   }
   
   .number-input {
     width: 70px;
-    background: #200527;
-    border: 2px solid #b3004a;
-    color: white;
+    background: var(--bg-primary);
+    border: 2px solid var(--accent-pink);
+    color: var(--text-primary);
     padding: 5px;
     border-radius: 5px;
     text-align: center;
@@ -28,9 +28,9 @@
   .slider-track {
     position: absolute;
     border-radius: 3px;
-    height: 6px;
-    background-color: #200527; 
-    border: 1px solid #b3004a;
+    height: 8px;
+    background-color: var(--bg-primary); 
+    border: 1px solid var(--accent-gradient-start);
     width: 100%;
     z-index: 1;
     top: 50%;
@@ -40,8 +40,8 @@
   .slider-range {
     position: absolute;
     border-radius: 3px;
-    height: 6px;
-    background-color: #b3004a; 
+    height: 8px;
+    background-color: var(--accent-gradient-start); 
     z-index: 2;
     top: 50%;
     transform: translateY(-50%);
@@ -55,6 +55,7 @@
     height: 0;
     width: 100%; 
     outline: none;
+    z-index: 3;
     top: 50%;
     transform: translateY(-50%);
     margin: 0;
@@ -63,29 +64,31 @@
   .thumb::-webkit-slider-thumb {
     -webkit-appearance: none;
     -webkit-tap-highlight-color: transparent;
-    background-color: #b3004a;
-    border: 2px solid white;
+    background-color: var(--accent-pink);
+    border: 2px solid var(--text-primary);
     border-radius: 50%;
-    box-shadow: 0 0 1px 1px #ced4da;
+    box-shadow: 0 0 1px 1px var(--text-secondary);
     cursor: pointer;
     height: 24px;
     width: 24px;
     margin-top: 0px;
     pointer-events: all; 
     position: relative;
+    z-index: 4;
   }
   
   .thumb::-moz-range-thumb {
-    background-color: #b3004a;
-    border: 2px solid white;
+    background-color: var(--accent-pink);
+    border: 2px solid var(--text-primary);
     border-radius: 50%;
-    box-shadow: 0 0 1px 1px #ced4da;
+    box-shadow: 0 0 1px 1px var(--text-secondary);
     cursor: pointer;
     height: 24px;
     width: 24px;
     margin-top: 0px;
     pointer-events: all;
     position: relative;
+    z-index: 4;
   }
   
   .thumb--left {

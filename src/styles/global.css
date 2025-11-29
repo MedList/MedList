@@ -1,25 +1,24 @@
 html, body {
-    margin: 0;
-    padding: 0;
-    color: white;
-  }
-  
-  html {
-    background: linear-gradient(to top, #34023f, #000);
-  }
-  
+  margin: 0;
+  padding: 0;
+  color: var(--text-primary); 
+}
 
-  *, *::before, *::after {
-    box-sizing: border-box;
-    font-family: "Inter", sans-serif;
-  }
-  
-  #root {
-    min-height: 100vh;
-  }
-  
+html {
+  background: var(--bg-primary); 
+}
 
-  .app-wrapper {
-    border: 3rem solid #b3004a;
-    min-height: 100vh; 
-  }
+*, *::before, *::after {
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+.app-wrapper {
+  border: 3rem solid var(--border-color); 
+  min-height: 100vh; 
+  transition: border-color 0.3s ease;
+}

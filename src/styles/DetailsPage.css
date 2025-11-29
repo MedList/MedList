@@ -1,6 +1,6 @@
 .details-container {
     padding: 40px 10%;
-    color: white;
+    color: var(--text-primary);
     animation: fadeIn 0.5s ease;
     min-height: 80vh;
   }
@@ -14,12 +14,12 @@
     font-family: sans-serif;
     font-size: 1.2rem;
     font-weight: bold;
-    color: #fff;
+    color: var(--text-primary);
     border: none;
     cursor: pointer;
-    background-color: #c82a6e;
+    background-color: var(--accent-gradient-end);
     border-radius: 50px;
-    box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.25), inset 0 -1px 1px rgba(0, 0, 0, 0.25);
+    box-shadow: inset 0 1px 1px var(--btn-highlight), inset 0 -1px 1px var(--btn-shadow);
     transition: transform 0.2s ease, filter 0.2s ease;
     display: inline-flex;
     align-items: center;
@@ -34,11 +34,11 @@
   .details-content {
     display: flex;
     gap: 50px;
-    background: rgba(32, 5, 39, 0.8);
+    background: var(--bg-content-glass);
     padding: 40px;
     border-radius: 20px;
-    border: 3px solid #b3004a;
-    box-shadow: 0 0 50px rgba(0,0,0,0.5);
+    border: 3px solid var(--accent-pink);
+    box-shadow: 0 0 50px var(--box-shadow-main);
   }
   
   .details-image {
@@ -46,8 +46,8 @@
     height: 525px;
     object-fit: cover;
     border-radius: 12px;
-    border: 4px solid #b3004a;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.7);
+    border: 4px solid var(--accent-pink);
+    box-shadow: 0 10px 30px var(--box-shadow-strong);
     flex-shrink: 0;
   }
   
@@ -62,7 +62,7 @@
     margin: 0 0 15px 0;
     font-family: 'Bangers', 'Arial', sans-serif; 
     letter-spacing: 2px;
-    text-shadow: 4px 4px 0px #b3004a;
+    text-shadow: 4px 4px 0px var(--accent-pink);
   }
   
   .details-meta {
@@ -73,7 +73,7 @@
   }
   
   .meta-pill {
-    background-color: #b3004a;
+    background-color: var(--accent-pink);
     padding: 8px 25px;
     border-radius: 20px;
     font-weight: bold;
@@ -84,7 +84,7 @@
   
   .meta-year {
     font-size: 1.8rem;
-    color: #ccc;
+    color: var(--text-secondary);
     font-weight: bold;
   }
   
@@ -100,7 +100,7 @@
   .details-description {
     font-size: 1.2rem;
     line-height: 1.8;
-    color: #ddd;
+    color: var(--text-primary);
     margin-bottom: 40px;
   }
   
@@ -121,15 +121,15 @@
   }
   
   .btn-primary {
-    background: linear-gradient(45deg, #b3004a, #c82a6e);
-    color: white;
-    box-shadow: 0 4px 15px rgba(179, 0, 74, 0.4);
+    background: linear-gradient(45deg, var(--accent-pink), var(--accent-gradient-end));
+    color: var(--text-primary);
+    box-shadow: 0 4px 15px var(--glow-pink);
   }
   
   .btn-secondary {
     background: transparent;
-    border: 3px solid #b3004a;
-    color: white;
+    border: 3px solid var(--accent-pink);
+    color: var(--text-primary);
   }
   
   .action-btn:hover {

@@ -6,8 +6,8 @@ nav{
     padding-right:55%;
     padding: 15px 55% 15px 5%;
     margin:20px 0px 20px 0px;
-    border-bottom: 0.5rem solid #b3004a;
-    border-top: 0.5rem solid #b3004a;
+    border-bottom: 0.5rem solid var(--accent-pink);
+    border-top: 0.5rem solid var(--accent-pink);
 }
 
 .navigation-link {
@@ -16,15 +16,15 @@ nav{
     font-family: Arial, "Helvetica Neue", sans-serif;
     font-size: 2rem;   
     font-weight: bold;
-    color: #fff;
+    color: var(--bg-primary);
     text-decoration: none;
     cursor: pointer;
-    background-color:#c82a6e ;
+    background-color:var(--accent-pink) ;
     border-radius: 50px; 
     box-shadow: 
-      inset 0 1px 1px rgba(255, 255, 255, 0.25), 
-      inset 0 -1px 1px rgba(0, 0, 0, 0.25);
-    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.3); 
+      inset 0 1px 1px var(--text-shadow-light), 
+      inset 0 -1px 1px var(--btn-shadow);
+    text-shadow: 0 1px 1px var(-text-shadow-light); 
     transition: transform 0.1s ease, filter 0.1s ease;
   }
   
@@ -35,7 +35,7 @@ nav{
   
 .navigation-link:active {
     box-shadow: 
-      inset 0 1px 1px rgba(0, 0, 0, 0.3),
-      inset 0 -1px 1px rgba(255, 255, 255, 0.2);
+      inset 0 1px 1px var(--btn-shadow-active),
+      inset 0 -1px 1px var(--text-shadow-light);
     transform: translateY(1px);
 }

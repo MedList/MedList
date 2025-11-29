@@ -2,11 +2,14 @@ import React, { useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { animeData, movieData, showData } from '../data';
 import StarRating from '../components/StarRating';
+import { useFavorites } from '../context/FavoritesContext';
 import '../styles/DetailsPage.css';
 
 function DetailsPage() {
   const { category, id } = useParams();
   const navigate = useNavigate();
+  
+  const { toggleFavorite, isFavorite } = useFavorites();
 
   let dataSet;
   const cleanCategory = category ? category.toLowerCase() : '';
@@ -18,9 +21,15 @@ function DetailsPage() {
 
   const item = dataSet.find(i => i.id === parseInt(id));
 
+  const isSaved = item ? isFavorite(item.id, cleanCategory) : false;
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [id]);
+
+  const handleSave = () => {
+    toggleFavorite(item, cleanCategory);
+  };
 
   if (!item) return <h2 style={{color:'white', textAlign:'center', marginTop:'50px'}}>Item not found</h2>;
 
@@ -60,7 +69,13 @@ function DetailsPage() {
           </p>
 
           <div className="action-buttons">
-            <button className="action-btn btn-primary">Save to List</button>
+            <button 
+              className={`action-btn ${isSaved ? 'btn-secondary' : 'btn-primary'}`}
+              onClick={handleSave}
+            >
+              {isSaved ? "✓ Saved to List" : "Save to List"}
+            </button>
+            
             <button className="action-btn btn-secondary">Watch Trailer</button>
           </div>
         </div>

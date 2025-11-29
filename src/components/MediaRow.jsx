@@ -14,18 +14,21 @@ function MediaRow({ title, items }) {
   }
 
   return (
-    <section className="media-row">
-      <h2>{title}</h2>
-      <div className="media-scroller">
-        {items.map((item) => (
-          <MediaCard 
-            key={item.id} 
-            item={item} 
-            category={category} 
-          />
-        ))}
-      </div>
-    </section>
+    <div className="media-row-wrapper">
+      <hr />
+      <section className="media-row">
+        <h2>{title}</h2>
+        <div className="media-scroller">
+          {items.map((item) => (
+            <MediaCard 
+              key={item.id} 
+              item={item} 
+              category={category} 
+            />
+          ))}
+        </div>
+      </section>
+    </div>
   );
 }
 

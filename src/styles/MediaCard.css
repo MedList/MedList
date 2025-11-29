@@ -5,7 +5,7 @@
   overflow: hidden;
   cursor: pointer;
   transition: transform 0.2s ease;
-  background: #222;
+  background: var(--bg-card);
   flex-shrink: 0;
 }
 
@@ -22,14 +22,13 @@
 .media-popover {
   position: fixed;
   width: 350px;
-  background: #200527;
-  color: white;
+  background: var(--bg-primary);
+  color: var(--text-primary);
   padding: 20px;
   border-radius: 8px;
-  border: 5px solid #b3004a;
+  border: 5px solid var(--accent-pink);
   z-index: 100;
   pointer-events: none;
-  animation: fadeIn 0.1s ease;
   transform: translateY(-50%);
 }
 
@@ -40,7 +39,7 @@
   top: 50%;
   left: 3px;
   border: 15px solid transparent;
-  border-right-color: #b3004a;
+  border-right-color: var(--accent-pink);
   margin-left: -35px;
   transform: translateY(-50%);
 }

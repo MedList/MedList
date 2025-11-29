@@ -7,7 +7,7 @@
   
   .stars-outer::before {
     content: '★★★★★';
-    color: #ccc; 
+    color: var(--text-secondary); 
     font-size: 1.25rem;
   }
   

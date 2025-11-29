@@ -5,7 +5,7 @@
   }
   
   .media-row h2 {
-    color: white;
+    color: var(--text-primary);
     margin-left: 20px;
   }
   
@@ -22,16 +22,28 @@
   }
 
   .media-scroller::-webkit-scrollbar-track {
-    background: #200527; 
+    background: var(--bg-primary); 
     border-radius: 10px;
   }
 
   .media-scroller::-webkit-scrollbar-thumb {
-    background: #b3004a; 
+    background: var(--accent-pink); 
     border-radius: 10px;
-    border: 2px solid #200527; 
+    border: 2px solid var(--bg-primary); 
   }
 
   .media-scroller::-webkit-scrollbar-thumb:hover {
-    background: #d41c61; 
+    background: var(--accent-pink-hover); 
   }
+
+
+.media-row-wrapper:first-of-type hr {
+  display: none;
+}
+
+.media-row-wrapper hr {
+  border: 0;
+  height: 0.5rem;
+  background: var(--accent-pink); 
+}
+
