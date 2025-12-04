@@ -14,8 +14,8 @@
   .spinner {
     width: 60px;
     height: 60px;
-    border: 6px solid var(--bg-primary); 
-    border-top: 6px solid var(--bg-primary); 
+    border: 6px solid var(--accent-pink); 
+    border-top: 6px solid var(--accent-pink); 
     border-radius: 50%;
     animation: spin 1s linear infinite;
     margin-bottom: 20px;
