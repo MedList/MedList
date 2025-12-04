@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-// 1. Import useLocation
 import { Routes, Route, useLocation } from 'react-router-dom';
 
 import HomePage from './pages/Home.jsx'; 

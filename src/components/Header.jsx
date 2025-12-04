@@ -11,11 +11,11 @@ function Header() {
 
       <div className="header-title-container">
         <h1 className="header-title">MedList</h1>
-        <img className="header-title-logo" src="/backdrop1.svg" alt="MedList logo"/>
+        <img className="header-title-logo" src="./vite.svg" alt="MedList logo"/>
       </div>
       
       <div className="header-ad-container">
-        <img className="header-ad" src="/unnamed.jpg" alt="Advertisement"/> 
+        <img className="header-ad" src="./unnamed.jpg" alt="Advertisement"/> 
       </div>
     </header>
   );
