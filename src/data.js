@@ -6,7 +6,11 @@ export const animeData = [
     description: 'Lorem ipsum dolor sit amet.',
     rating: '2.2',
     genre: 'Action',
-    releaseYear: 2021
+    releaseYear: 2021,
+    runtimeMinutes: 24,
+    isAdult: 0,
+    numVotes: 1200,
+    directors: ['Director A']
   },
   {
     id: 2,
@@ -15,7 +19,11 @@ export const animeData = [
     description: 'Lorem ipsum dolor sit amet.',
     rating: '4',
     genre: 'Adventure',
-    releaseYear: 2018
+    releaseYear: 2018,
+    runtimeMinutes: 24,
+    isAdult: 0,
+    numVotes: 850,
+    directors: ['Director B']
   },
   {
     id: 3,
@@ -24,7 +32,11 @@ export const animeData = [
     description: 'Lorem ipsum dolor sit amet.',
     rating: '9.1',
     genre: 'Sci-Fi',
-    releaseYear: 2023
+    releaseYear: 2023,
+    runtimeMinutes: 25,
+    isAdult: 1,
+    numVotes: 15000,
+    directors: ['Director C']
   },
   {
     id: 4,
@@ -33,7 +45,11 @@ export const animeData = [
     description: 'Lorem ipsum dolor sit amet.',
     rating: '8.8',
     genre: 'Fantasy',
-    releaseYear: 2020
+    releaseYear: 2020,
+    runtimeMinutes: 23,
+    isAdult: 0,
+    numVotes: 9000,
+    directors: ['Director A']
   },
   {
     id: 5,
@@ -42,7 +58,11 @@ export const animeData = [
     description: 'Lorem ipsum dolor sit amet.',
     rating: '7.2',
     genre: 'Action',
-    releaseYear: 2015
+    releaseYear: 2015,
+    runtimeMinutes: 24,
+    isAdult: 0,
+    numVotes: 3400,
+    directors: ['Director D']
   },
   {
     id: 6,
@@ -51,7 +71,11 @@ export const animeData = [
     description: 'Lorem ipsum dolor sit amet.',
     rating: '9.5',
     genre: 'Drama',
-    releaseYear: 2024
+    releaseYear: 2024,
+    runtimeMinutes: 45,
+    isAdult: 1,
+    numVotes: 22000,
+    directors: ['Director E']
   },
   {
     id: 7,
@@ -60,7 +84,11 @@ export const animeData = [
     description: 'Lorem ipsum dolor sit amet.',
     rating: '8.1',
     genre: 'Sci-Fi',
-    releaseYear: 2019
+    releaseYear: 2019,
+    runtimeMinutes: 24,
+    isAdult: 0,
+    numVotes: 5600,
+    directors: ['Director C']
   },
   {
     id: 8,
@@ -69,7 +97,11 @@ export const animeData = [
     description: 'Lorem ipsum dolor sit amet.',
     rating: '7.9',
     genre: 'Adventure',
-    releaseYear: 2016
+    releaseYear: 2016,
+    runtimeMinutes: 24,
+    isAdult: 0,
+    numVotes: 4100,
+    directors: ['Director F']
   },
   {
     id: 9,
@@ -78,7 +110,11 @@ export const animeData = [
     description: 'Lorem ipsum dolor sit amet.',
     rating: '8.6',
     genre: 'Fantasy',
-    releaseYear: 2022
+    releaseYear: 2022,
+    runtimeMinutes: 24,
+    isAdult: 0,
+    numVotes: 8800,
+    directors: ['Director G']
   },
   {
     id: 10,
@@ -87,7 +123,11 @@ export const animeData = [
     description: 'Lorem ipsum dolor sit amet.',
     rating: '9.0',
     genre: 'Action',
-    releaseYear: 2023
+    releaseYear: 2023,
+    runtimeMinutes: 24,
+    isAdult: 1,
+    numVotes: 12500,
+    directors: ['Director A']
   },
   {
     id: 11,
@@ -96,7 +136,11 @@ export const animeData = [
     description: 'Lorem ipsum dolor sit amet.',
     rating: '7.7',
     genre: 'Drama',
-    releaseYear: 2017
+    releaseYear: 2017,
+    runtimeMinutes: 22,
+    isAdult: 0,
+    numVotes: 3200,
+    directors: ['Director H']
   },
   {
     id: 12,
@@ -105,7 +149,11 @@ export const animeData = [
     description: 'Lorem ipsum dolor sit amet.',
     rating: '8.3',
     genre: 'Sci-Fi',
-    releaseYear: 2021
+    releaseYear: 2021,
+    runtimeMinutes: 24,
+    isAdult: 0,
+    numVotes: 6700,
+    directors: ['Director C']
   },
   {
     id: 13,
@@ -114,7 +162,11 @@ export const animeData = [
     description: 'Lorem ipsum dolor sit amet.',
     rating: '9.2',
     genre: 'Action',
-    releaseYear: 2024
+    releaseYear: 2024,
+    runtimeMinutes: 24,
+    isAdult: 1,
+    numVotes: 18000,
+    directors: ['Director I']
   },
   {
     id: 14,
@@ -123,7 +175,11 @@ export const animeData = [
     description: 'Lorem ipsum dolor sit amet.',
     rating: '7.1',
     genre: 'Adventure',
-    releaseYear: 2014
+    releaseYear: 2014,
+    runtimeMinutes: 24,
+    isAdult: 0,
+    numVotes: 2100,
+    directors: ['Director B']
   },
   {
     id: 15,
@@ -132,7 +188,11 @@ export const animeData = [
     description: 'Lorem ipsum dolor sit amet.',
     rating: '8.9',
     genre: 'Fantasy',
-    releaseYear: 2022
+    releaseYear: 2022,
+    runtimeMinutes: 24,
+    isAdult: 0,
+    numVotes: 9500,
+    directors: ['Director G']
   }
 ];
 
@@ -144,7 +204,10 @@ export const showData = [
     description: 'Lorem ipsum dolor sit amet.',
     rating: '8.5',
     releaseYear: 2020,
-    genre: 'Drama'
+    genre: 'Drama',
+    runtimeMinutes: 45,
+    isAdult: 0,
+    numVotes: 5000
   },
   {
     id: 2,
@@ -153,125 +216,25 @@ export const showData = [
     description: 'Lorem ipsum dolor sit amet.',
     rating: '9.3',
     releaseYear: 2023,
-    genre: 'Comedy'
+    genre: 'Comedy',
+    runtimeMinutes: 30,
+    isAdult: 1,
+    numVotes: 12000
   },
-  {
-    id: 3,
-    title: 'Show Title 3',
-    imageUrl: '/random-banner.jpg',
-    description: 'Lorem ipsum dolor sit amet.',
-    rating: '7.8',
-    releaseYear: 2019,
-    genre: 'Action'
-  },
-  {
-    id: 4,
-    title: 'Show Title 4',
-    imageUrl: '/random-banner.jpg',
-    description: 'Lorem ipsum dolor sit amet.',
-    rating: '8.0',
-    releaseYear: 2021,
-    genre: 'Sci-Fi'
-  },
-  {
-    id: 5,
-    title: 'Show Title 5',
-    imageUrl: '/random-banner.jpg',
-    description: 'Lorem ipsum dolor sit amet.',
-    rating: '9.6',
-    releaseYear: 2024,
-    genre: 'Drama'
-  },
-  {
-    id: 6,
-    title: 'Show Title 6',
-    imageUrl: '/random-banner.jpg',
-    description: 'Lorem ipsum dolor sit amet.',
-    rating: '7.3',
-    releaseYear: 2015,
-    genre: 'Comedy'
-  },
-  {
-    id: 7,
-    title: 'Show Title 7',
-    imageUrl: '/random-banner.jpg',
-    description: 'Lorem ipsum dolor sit amet.',
-    rating: '8.7',
-    releaseYear: 2022,
-    genre: 'Action'
-  },
-  {
-    id: 8,
-    title: 'Show Title 8',
-    imageUrl: '/random-banner.jpg',
-    description: 'Lorem ipsum dolor sit amet.',
-    rating: '9.1',
-    releaseYear: 2018,
-    genre: 'Mystery'
-  },
-  {
-    id: 9,
-    title: 'Show Title 9',
-    imageUrl: '/random-banner.jpg',
-    description: 'Lorem ipsum dolor sit amet.',
-    rating: '7.6',
-    releaseYear: 2017,
-    genre: 'Sci-Fi'
-  },
-  {
-    id: 10,
-    title: 'Show Title 10',
-    imageUrl: '/random-banner.jpg',
-    description: 'Lorem ipsum dolor sit amet.',
-    rating: '8.4',
-    releaseYear: 2020,
-    genre: 'Drama'
-  },
-  {
-    id: 11,
-    title: 'Show Title 11',
-    imageUrl: '/random-banner.jpg',
-    description: 'Lorem ipsum dolor sit amet.',
-    rating: '9.4',
-    releaseYear: 2023,
-    genre: 'Comedy'
-  },
-  {
-    id: 12,
-    title: 'Show Title 12',
-    imageUrl: '/random-banner.jpg',
-    description: 'Lorem ipsum dolor sit amet.',
-    rating: '8.2',
-    releaseYear: 2021,
-    genre: 'Action'
-  },
-  {
-    id: 13,
-    title: 'Show Title 13',
-    imageUrl: '/random-banner.jpg',
-    description: 'Lorem ipsum dolor sit amet.',
-    rating: '7.0',
-    releaseYear: 2016,
-    genre: 'Mystery'
-  },
-  {
-    id: 14,
-    title: 'Show Title 14',
-    imageUrl: '/random-banner.jpg',
-    description: 'Lorem ipsum dolor sit amet.',
-    rating: '9.8',
-    releaseYear: 2024,
-    genre: 'Drama'
-  },
-  {
-    id: 15,
-    title: 'Show Title 15',
-    imageUrl: '/random-banner.jpg',
-    description: 'Lorem ipsum dolor sit amet.',
-    rating: '8.8',
-    releaseYear: 2022,
-    genre: 'Sci-Fi'
-  }
+  // ... (You can add fields to the rest if needed, defaulting to 0/45min) ...
+  { id: 3, title: 'Show Title 3', imageUrl: '/random-banner.jpg', description: 'Lorem', rating: '7.8', releaseYear: 2019, genre: 'Action', runtimeMinutes: 42, isAdult: 0, numVotes: 3000 },
+  { id: 4, title: 'Show Title 4', imageUrl: '/random-banner.jpg', description: 'Lorem', rating: '8.0', releaseYear: 2021, genre: 'Sci-Fi', runtimeMinutes: 50, isAdult: 0, numVotes: 4000 },
+  { id: 5, title: 'Show Title 5', imageUrl: '/random-banner.jpg', description: 'Lorem', rating: '9.6', releaseYear: 2024, genre: 'Drama', runtimeMinutes: 60, isAdult: 1, numVotes: 25000 },
+  { id: 6, title: 'Show Title 6', imageUrl: '/random-banner.jpg', description: 'Lorem', rating: '7.3', releaseYear: 2015, genre: 'Comedy', runtimeMinutes: 22, isAdult: 0, numVotes: 1500 },
+  { id: 7, title: 'Show Title 7', imageUrl: '/random-banner.jpg', description: 'Lorem', rating: '8.7', releaseYear: 2022, genre: 'Action', runtimeMinutes: 45, isAdult: 0, numVotes: 8000 },
+  { id: 8, title: 'Show Title 8', imageUrl: '/random-banner.jpg', description: 'Lorem', rating: '9.1', releaseYear: 2018, genre: 'Mystery', runtimeMinutes: 55, isAdult: 1, numVotes: 11000 },
+  { id: 9, title: 'Show Title 9', imageUrl: '/random-banner.jpg', description: 'Lorem', rating: '7.6', releaseYear: 2017, genre: 'Sci-Fi', runtimeMinutes: 44, isAdult: 0, numVotes: 2500 },
+  { id: 10, title: 'Show Title 10', imageUrl: '/random-banner.jpg', description: 'Lorem', rating: '8.4', releaseYear: 2020, genre: 'Drama', runtimeMinutes: 48, isAdult: 0, numVotes: 6000 },
+  { id: 11, title: 'Show Title 11', imageUrl: '/random-banner.jpg', description: 'Lorem', rating: '9.4', releaseYear: 2023, genre: 'Comedy', runtimeMinutes: 30, isAdult: 1, numVotes: 14000 },
+  { id: 12, title: 'Show Title 12', imageUrl: '/random-banner.jpg', description: 'Lorem', rating: '8.2', releaseYear: 2021, genre: 'Action', runtimeMinutes: 40, isAdult: 0, numVotes: 5500 },
+  { id: 13, title: 'Show Title 13', imageUrl: '/random-banner.jpg', description: 'Lorem', rating: '7.0', releaseYear: 2016, genre: 'Mystery', runtimeMinutes: 42, isAdult: 0, numVotes: 1200 },
+  { id: 14, title: 'Show Title 14', imageUrl: '/random-banner.jpg', description: 'Lorem', rating: '9.8', releaseYear: 2024, genre: 'Drama', runtimeMinutes: 58, isAdult: 1, numVotes: 30000 },
+  { id: 15, title: 'Show Title 15', imageUrl: '/random-banner.jpg', description: 'Lorem', rating: '8.8', releaseYear: 2022, genre: 'Sci-Fi', runtimeMinutes: 46, isAdult: 0, numVotes: 9000 }
 ];
 
 export const movieData = [
@@ -282,7 +245,10 @@ export const movieData = [
     description: 'Lorem ipsum dolor sit amet.',
     rating: '9.7',
     releaseYear: 2010,
-    genre: 'Action'
+    genre: 'Action',
+    runtimeMinutes: 148,
+    isAdult: 1,
+    numVotes: 50000
   },
   {
     id: 2,
@@ -291,123 +257,22 @@ export const movieData = [
     description: 'Lorem ipsum dolor sit amet.',
     rating: '7.4',
     releaseYear: 2015,
-    genre: 'Comedy'
+    genre: 'Comedy',
+    runtimeMinutes: 95,
+    isAdult: 0,
+    numVotes: 8000
   },
-  {
-    id: 3,
-    title: 'Movie Title 3',
-    imageUrl: '/random-banner.jpg',
-    description: 'Lorem ipsum dolor sit amet.',
-    rating: '8.6',
-    releaseYear: 2020,
-    genre: 'Drama'
-  },
-  {
-    id: 4,
-    title: 'Movie Title 4',
-    imageUrl: '/random-banner.jpg',
-    description: 'Lorem ipsum dolor sit amet.',
-    rating: '9.2',
-    releaseYear: 2023,
-    genre: 'Sci-Fi'
-  },
-  {
-    id: 5,
-    title: 'Movie Title 5',
-    imageUrl: '/random-banner.jpg',
-    description: 'Lorem ipsum dolor sit amet.',
-    rating: '7.9',
-    releaseYear: 2018,
-    genre: 'Action'
-  },
-  {
-    id: 6,
-    title: 'Movie Title 6',
-    imageUrl: '/random-banner.jpg',
-    description: 'Lorem ipsum dolor sit amet.',
-    rating: '8.1',
-    releaseYear: 2016,
-    genre: 'Comedy'
-  },
-  {
-    id: 7,
-    title: 'Movie Title 7',
-    imageUrl: '/random-banner.jpg',
-    description: 'Lorem ipsum dolor sit amet.',
-    rating: '9.0',
-    releaseYear: 2022,
-    genre: 'Drama'
-  },
-  {
-    id: 8,
-    title: 'Movie Title 8',
-    imageUrl: '/random-banner.jpg',
-    description: 'Lorem ipsum dolor sit amet.',
-    rating: '7.7',
-    releaseYear: 2014,
-    genre: 'Horror'
-  },
-  {
-    id: 9,
-    title: 'Movie Title 9',
-    imageUrl: '/random-banner.jpg',
-    description: 'Lorem ipsum dolor sit amet.',
-    rating: '8.3',
-    releaseYear: 2019,
-    genre: 'Sci-Fi'
-  },
-  {
-    id: 10,
-    title: 'Movie Title 10',
-    imageUrl: '/random-banner.jpg',
-    description: 'Lorem ipsum dolor sit amet.',
-    rating: '9.5',
-    releaseYear: 2024,
-    genre: 'Action'
-  },
-  {
-    id: 11,
-    title: 'Movie Title 11',
-    imageUrl: '/random-banner.jpg',
-    description: 'Lorem ipsum dolor sit amet.',
-    rating: '7.2',
-    releaseYear: 2013,
-    genre: 'Comedy'
-  },
-  {
-    id: 12,
-    title: 'Movie Title 12',
-    imageUrl: '/random-banner.jpg',
-    description: 'Lorem ipsum dolor sit amet.',
-    rating: '8.8',
-    releaseYear: 2021,
-    genre: 'Horror'
-  },
-  {
-    id: 13,
-    title: 'Movie Title 13',
-    imageUrl: '/random-banner.jpg',
-    description: 'Lorem ipsum dolor sit amet.',
-    rating: '9.9',
-    releaseYear: 2024,
-    genre: 'Drama'
-  },
-  {
-    id: 14,
-    title: 'Movie Title 14',
-    imageUrl: '/random-banner.jpg',
-    description: 'Lorem ipsum dolor sit amet.',
-    rating: '7.1',
-    releaseYear: 2012,
-    genre: 'Action'
-  },
-  {
-    id: 15,
-    title: 'Movie Title 15',
-    imageUrl: '/random-banner.jpg',
-    description: 'Lorem ipsum dolor sit amet.',
-    rating: '8.0',
-    releaseYear: 2017,
-    genre: 'Sci-Fi'
-  }
+  { id: 3, title: 'Movie Title 3', imageUrl: '/random-banner.jpg', description: 'Lorem', rating: '8.6', releaseYear: 2020, genre: 'Drama', runtimeMinutes: 120, isAdult: 0, numVotes: 15000 },
+  { id: 4, title: 'Movie Title 4', imageUrl: '/random-banner.jpg', description: 'Lorem', rating: '9.2', releaseYear: 2023, genre: 'Sci-Fi', runtimeMinutes: 135, isAdult: 0, numVotes: 22000 },
+  { id: 5, title: 'Movie Title 5', imageUrl: '/random-banner.jpg', description: 'Lorem', rating: '7.9', releaseYear: 2018, genre: 'Action', runtimeMinutes: 110, isAdult: 1, numVotes: 9000 },
+  { id: 6, title: 'Movie Title 6', imageUrl: '/random-banner.jpg', description: 'Lorem', rating: '8.1', releaseYear: 2016, genre: 'Comedy', runtimeMinutes: 100, isAdult: 0, numVotes: 7500 },
+  { id: 7, title: 'Movie Title 7', imageUrl: '/random-banner.jpg', description: 'Lorem', rating: '9.0', releaseYear: 2022, genre: 'Drama', runtimeMinutes: 125, isAdult: 0, numVotes: 18000 },
+  { id: 8, title: 'Movie Title 8', imageUrl: '/random-banner.jpg', description: 'Lorem', rating: '7.7', releaseYear: 2014, genre: 'Horror', runtimeMinutes: 98, isAdult: 1, numVotes: 6000 },
+  { id: 9, title: 'Movie Title 9', imageUrl: '/random-banner.jpg', description: 'Lorem', rating: '8.3', releaseYear: 2019, genre: 'Sci-Fi', runtimeMinutes: 115, isAdult: 0, numVotes: 11000 },
+  { id: 10, title: 'Movie Title 10', imageUrl: '/random-banner.jpg', description: 'Lorem', rating: '9.5', releaseYear: 2024, genre: 'Action', runtimeMinutes: 150, isAdult: 1, numVotes: 40000 },
+  { id: 11, title: 'Movie Title 11', imageUrl: '/random-banner.jpg', description: 'Lorem', rating: '7.2', releaseYear: 2013, genre: 'Comedy', runtimeMinutes: 92, isAdult: 0, numVotes: 5000 },
+  { id: 12, title: 'Movie Title 12', imageUrl: '/random-banner.jpg', description: 'Lorem', rating: '8.8', releaseYear: 2021, genre: 'Horror', runtimeMinutes: 105, isAdult: 1, numVotes: 13000 },
+  { id: 13, title: 'Movie Title 13', imageUrl: '/random-banner.jpg', description: 'Lorem', rating: '9.9', releaseYear: 2024, genre: 'Drama', runtimeMinutes: 140, isAdult: 0, numVotes: 60000 },
+  { id: 14, title: 'Movie Title 14', imageUrl: '/random-banner.jpg', description: 'Lorem', rating: '7.1', releaseYear: 2012, genre: 'Action', runtimeMinutes: 108, isAdult: 0, numVotes: 4500 },
+  { id: 15, title: 'Movie Title 15', imageUrl: '/random-banner.jpg', description: 'Lorem', rating: '8.0', releaseYear: 2017, genre: 'Sci-Fi', runtimeMinutes: 118, isAdult: 0, numVotes: 10000 }
 ];

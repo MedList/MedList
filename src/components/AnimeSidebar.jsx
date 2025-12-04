@@ -12,14 +12,16 @@ function AnimeSidebar({
   onGenreChange, 
   onRatingChange,
   onYearChange,
-  onSortChange
+  onSortChange,
+  ageFilter,
+  onAgeFilterChange
 }) {
   return (
     <div className="sidebar-container">
       <input 
         type="text" 
         className="search-input" 
-        placeholder="Search an anime..." 
+        placeholder="Search..." 
         value={searchQuery}
         onChange={(e) => onSearchChange(e.target.value)}
       />
@@ -45,7 +47,6 @@ function AnimeSidebar({
         </select>
       </div>
 
-      
       <div style={{ marginBottom: '30px' }}>
         <DoubleRangeSlider 
           title="Rating Range"
@@ -70,6 +71,25 @@ function AnimeSidebar({
         />
       </div>
 
+      <div>
+        <h3 className="sidebar-section-title">Age Rating</h3>
+        <div className="filter-buttons">
+          <button 
+            className="filter-btn"
+            style={{ opacity: ageFilter === '18+' ? 1 : 0.8 }}
+            onClick={() => onAgeFilterChange(ageFilter === '18+' ? 'all' : '18+')}
+          >
+            18+
+          </button>
+          <button 
+            className="filter-btn"
+            style={{ opacity: ageFilter === 'pg13' ? 1 : 0.5 }}
+            onClick={() => onAgeFilterChange(ageFilter === 'pg13' ? 'all' : 'pg13')}
+          >
+            PG13
+          </button>
+        </div>
+      </div>
 
       <div>
         <h3 className="sidebar-section-title">Popular Anime:</h3>

@@ -31,7 +31,13 @@ function DetailsPage() {
     toggleFavorite(item, cleanCategory);
   };
 
-  if (!item) return <h2 style={{color:'white', textAlign:'center', marginTop:'50px'}}>Item not found</h2>;
+  const formatVotes = (num) => {
+    if (!num) return '0';
+    if (num >= 1000) return (num / 1000).toFixed(1) + 'k';
+    return num;
+  };
+
+  if (!item) return <h2 style={{color:'var(--text-primary)', textAlign:'center', marginTop:'50px'}}>Item not found</h2>;
 
   return (
     <div className="details-container">
@@ -51,13 +57,37 @@ function DetailsPage() {
           <div className="details-meta">
             <span className="meta-pill">{item.genre}</span>
             <span className="meta-year">{item.releaseYear}</span>
+            
+            {item.runtimeMinutes && (
+               <span className="meta-year">⏱ {item.runtimeMinutes} min</span>
+            )}
+
+            {item.isAdult === 1 && (
+               <span style={{
+                 backgroundColor: 'red', 
+                 color: 'white', 
+                 padding: '4px 8px', 
+                 borderRadius: '4px', 
+                 fontWeight: 'bold',
+                 fontSize: '1rem',
+                 marginLeft: '10px'
+               }}>
+                 18+
+               </span>
+            )}
           </div>
 
           <div className="details-rating">
             <div style={{ transform: 'scale(1.5)', transformOrigin: 'left center' }}>
               <StarRating rating={item.rating} />
             </div>
-            <span style={{ marginLeft: '60px' }}>{item.rating} / 10</span>
+            
+            <div style={{ marginLeft: '60px', display: 'flex', flexDirection: 'column', lineHeight: '1.2' }}>
+                <span>{item.rating} / 10</span>
+                <span style={{ fontSize: '1rem', color: 'var(--text-secondary)', fontWeight: 'normal' }}>
+                    ({formatVotes(item.numVotes)} votes)
+                </span>
+            </div>
           </div>
 
           <p className="details-description">
@@ -67,6 +97,13 @@ function DetailsPage() {
             Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
             Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
           </p>
+
+          {item.directors && item.directors.length > 0 && (
+            <div style={{ marginBottom: '30px', fontSize: '1.2rem', color: 'var(--text-primary)' }}>
+                <span style={{ color: 'var(--text-secondary)', fontWeight: 'bold' }}>Director: </span>
+                {item.directors.join(', ')}
+            </div>
+          )}
 
           <div className="action-buttons">
             <button 

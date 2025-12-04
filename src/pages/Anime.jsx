@@ -11,19 +11,26 @@ function Anime() {
   
   const [ratingRange, setRatingRange] = useState({ min: 0, max: 10 });
   const [yearRange, setYearRange] = useState({ min: 1980, max: 2024 });
+  
+  const [ageFilter, setAgeFilter] = useState('all'); 
 
   const uniqueGenres = [...new Set(animeData.map(item => item.genre))];
 
   const filteredAnime = animeData.filter(item => {
     const searchMatch = item.title.toLowerCase().includes(searchQuery.toLowerCase());
     const genreMatch = selectedGenre === "All" || item.genre === selectedGenre;
-    
     const ratingValue = parseFloat(item.rating);
     const ratingMatch = ratingValue >= ratingRange.min && ratingValue <= ratingRange.max;
-
     const yearMatch = item.releaseYear >= yearRange.min && item.releaseYear <= yearRange.max;
 
-    return searchMatch && genreMatch && ratingMatch && yearMatch;
+    let ageMatch = true;
+    if (ageFilter === '18+') {
+        ageMatch = item.isAdult === 1;
+    } else if (ageFilter === 'pg13') {
+        ageMatch = item.isAdult === 0;
+    }
+
+    return searchMatch && genreMatch && ratingMatch && yearMatch && ageMatch;
   });
 
   const sortedAnime = [...filteredAnime].sort((a, b) => {
@@ -49,16 +56,17 @@ function Anime() {
         onSearchChange={setSearchQuery}
         onGenreChange={setSelectedGenre}
         onSortChange={setSortOption}
-        // Pass Range Handlers
         onRatingChange={setRatingRange}
         onYearChange={setYearRange}
+        ageFilter={ageFilter}
+        onAgeFilterChange={setAgeFilter}
       />
 
       <div className="anime-list-container">
         {sortedAnime.map((item) => (
           <AnimeCard key={item.id} item={item} category="anime" />
         ))}
-        {sortedAnime.length === 0 && <h2 style={{color: 'white'}}>No anime found matching these filters.</h2>}
+        {sortedAnime.length === 0 && <h2 style={{color: 'var(--text-primary)'}}>No anime found matching these filters.</h2>}
       </div>
     </div>
   );
