@@ -1,9 +1,17 @@
 .anime-page-container {
-    display: flex;
-    padding: 30px 5%; 
-    gap: 30px;
+  display: flex;
+  padding: 30px 5%; 
+  gap: 30px;
+}
+
+.anime-list-container {
+  flex: 1; 
+}
+
+@media (max-width: 900px) {
+  .anime-page-container {
+    flex-direction: column; 
+    padding: 20px 3%;
+    gap: 20px;
   }
-  
-  .anime-list-container {
-    flex: 1; 
-  }
+}

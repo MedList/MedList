@@ -88,7 +88,6 @@
   gap: 10px;
 }
 
-
 .save-icon {
   width: 24px;
   height: 24px;
@@ -121,4 +120,35 @@
 
 .save-button:hover .save-icon {
   stroke: var(--text-primary);
+}
+
+@media (max-width: 768px) {
+  .anime-card-horizontal {
+    flex-direction: column; 
+    height: auto; 
+  }
+
+  .anime-card-image {
+    width: 100%;
+    height: 200px; 
+  }
+
+  .anime-card-horizontal:hover .anime-card-image {
+    width: 100%; 
+    transform: scale(1.05);
+  }
+  
+  .anime-card-content {
+    padding: 15px;
+  }
+  
+  .anime-card-title {
+    font-size: 1.5rem;
+  }
+  
+  .anime-card-description {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+  }
 }

@@ -83,7 +83,7 @@ function AnimeSidebar({
           </button>
           <button 
             className="filter-btn"
-            style={{ opacity: ageFilter === 'pg13' ? 1 : 0.5 }}
+            style={{ opacity: ageFilter === 'pg13' ? 1 : 0.8 }}
             onClick={() => onAgeFilterChange(ageFilter === 'pg13' ? 'all' : 'pg13')}
           >
             PG13
