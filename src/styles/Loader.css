@@ -15,7 +15,7 @@
     width: 60px;
     height: 60px;
     border: 6px solid var(--accent-pink); 
-    border-top: 6px solid var(--accent-pink); 
+    border-top: 6px solid var(--accent-pink-hover); 
     border-radius: 50%;
     animation: spin 1s linear infinite;
     margin-bottom: 20px;

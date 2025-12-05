@@ -2,15 +2,20 @@
   width: 200px;
   height: 300px;
   border-radius: 8px;
+  border: 3px solid var(--accent-pink);
   overflow: hidden;
   cursor: pointer;
-  transition: transform 0.2s ease;
   background: var(--bg-card);
   flex-shrink: 0;
+  position: relative; 
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .media-card:hover {
   transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+  border: 4px solid var(--accent-pink-hover);
+  z-index: 5;
 }
 
 .media-card img {
@@ -19,29 +24,45 @@
   object-fit: cover;
 }
 
+.desktop-saved-badge {
+  position: absolute;
+  top: 5px; 
+  right: 5px; 
+  color: var(--accent-pink);
+  font-size: 1.5rem;
+}
+
+.media-mobile-info {
+  display: none;
+}
+
 .media-popover {
-  position: fixed;
   width: 350px;
   background: var(--bg-primary);
   color: var(--text-primary);
   padding: 20px;
   border-radius: 8px;
+  margin-left: -10px;
   border: 5px solid var(--accent-pink);
-  z-index: 100;
   pointer-events: none;
-  transform: translateY(-50%);
+  z-index: 9999;
 }
-
 
 .media-popover::after {
   content: '';
   position: absolute;
   top: 50%;
-  left: 3px;
-  border: 15px solid transparent;
-  border-right-color: var(--accent-pink);
-  margin-left: -35px;
-  transform: translateY(-50%);
+  right: 100%; 
+  margin-top: -20px;
+  border-width: 20px;
+  border-style: solid;
+  border-color: transparent var(--accent-pink) transparent transparent;
+}
+
+.media-popover.flipped::after {
+  right: auto;
+  left: 100%; 
+  border-color: transparent transparent transparent var(--accent-pink);
 }
 
 .media-popover h3 {
@@ -66,7 +87,67 @@
   font-weight: bold;
 }
 
+.saved-status {
+  margin-top: 15px;
+  color: var(--accent-pink);
+  font-weight: bold;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
+}
+
+@media (max-width: 900px) {
+  .media-popover {
+    display: none !important;
+  }
+
+  .media-mobile-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 60%; 
+    padding: 10px;
+    background: linear-gradient(to top, rgba(0,0,0,0.95), transparent);
+    color: white;
+    pointer-events: none;
+  }
+
+  .mobile-title {
+    margin: 0 0 5px 0;
+    font-size: 1.1rem;
+    line-height: 1.2;
+    text-shadow: 0 2px 4px rgba(0,0,0,1);
+    color: #fff;
+  }
+
+  .mobile-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.9rem;
+    font-weight: bold;
+  }
+
+  .mobile-rating {
+    color: #f8c822; 
+  }
+
+  .mobile-saved {
+    color: var(--accent-pink);
+    text-transform: uppercase;
+    font-size: 0.8rem;
+  }
+
+  .desktop-saved-badge {
+    display: none;
+  }
 }

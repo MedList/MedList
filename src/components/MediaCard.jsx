@@ -1,66 +1,100 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
+import { createPortal } from 'react-dom';
 import StarRating from './StarRating';
 import { useNavigate } from 'react-router-dom';
-import { useFavorites } from '../context/FavoritesContext'; 
+import { useFavorites } from '../context/FavoritesContext';
 import '../styles/MediaCard.css';
 
 function MediaCard({ item, category }) {
-  const [isHovering, setIsHovering] = useState(false);
-  const [position, setPosition] = useState({ x: 0, y: 0 });
+  const [coords, setCoords] = useState(null);
+  const [isFlipped, setIsFlipped] = useState(false);
+  
+  const cardRef = useRef(null);
   const navigate = useNavigate();
-  const { toggleFavorite, isFavorite } = useFavorites(); 
+  const { isFavorite } = useFavorites(); 
 
   const safeCategory = category || 'anime';
   const isSaved = isFavorite(item.id, safeCategory);
-
-  const handleMouseEnter = () => setIsHovering(true);
-  const handleMouseLeave = () => setIsHovering(false);
-
-  const handleMouseMove = (e) => {
-    const cardRect = e.currentTarget.getBoundingClientRect();
-    setPosition({
-      x: cardRect.right + 50,
-      y: cardRect.top + (cardRect.height / 2)
-    });
-  };
 
   const handleClick = () => {
     navigate(`/details/${safeCategory}/${item.id}`);
   };
 
+  const handleMouseEnter = () => {
+    if (cardRef.current) {
+      const rect = cardRef.current.getBoundingClientRect();
+      const popupWidth = 360; 
+      const windowWidth = window.innerWidth;
+
+      const fitsRight = rect.right + popupWidth < windowWidth;
+
+      if (fitsRight) {
+        setCoords({
+          top: rect.top + (rect.height / 2), 
+          left: rect.right + 10 
+        });
+        setIsFlipped(false);
+      } else {
+        setCoords({
+          top: rect.top + (rect.height / 2),
+          left: rect.left - 10 
+        });
+        setIsFlipped(true);
+      }
+    }
+  };
+
+  const handleMouseLeave = () => {
+    setCoords(null); 
+  };
+
+  const popupContent = coords && (
+    <div 
+      className={`media-popover ${isFlipped ? 'flipped' : ''}`}
+      style={{ 
+        position: 'fixed',
+        top: `${coords.top}px`, 
+        left: `${coords.left}px`,
+        transform: isFlipped ? 'translate(-100%, -50%)' : 'translate(0, -50%)',
+      }}
+    >
+      <h3>{item.title}</h3>
+      <p>{item.description}</p>
+      
+      <div className="popover-rating">
+        <StarRating rating={item.rating} />
+        <span>{item.rating} rating</span>
+      </div>
+      
+      {isSaved && <div className="saved-status">★ Saved</div>}
+    </div>
+  );
+
   return (
     <>
       <div 
         className="media-card"
+        ref={cardRef}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
-        onMouseMove={handleMouseMove}
         onClick={handleClick}
       >
         <img src={item.imageUrl} alt={item.title} />
+        
+        <div className="media-mobile-info">
+          <h3 className="mobile-title">{item.title}</h3>
+          <div className="mobile-meta">
+             <span className="mobile-rating">★ {item.rating}</span>
+             {isSaved && <span className="mobile-saved">Saved</span>}
+          </div>
+        </div>
+
         {isSaved && (
-           <div style={{position: 'absolute', top: '5px', right: '5px', color: '#b3004a'}}>
-             ★
-           </div>
+           <div className="desktop-saved-badge">★</div>
         )}
       </div>
 
-      {isHovering && (
-        <div 
-          className="media-popover"
-          style={{ top: `${position.y}px`, left: `${position.x}px` }}
-        >
-          <h3>{item.title}</h3>
-          <p>{item.description}</p>
-          <div className="popover-rating">
-            <StarRating rating={item.rating} />
-            <span>{item.rating} rating</span>
-          </div>
-          <div style={{marginTop: '10px', fontSize: '0.8rem', color: '#b3004a', fontWeight: 'bold'}}>
-            {isSaved ? "Already in your Saved list" : ""}
-          </div>
-        </div>
-      )}
+      {coords && createPortal(popupContent, document.body)}
     </>
   );
 }
