@@ -32,7 +32,6 @@
   border: 2px solid var(--accent-pink);
   border-radius: 5px;
   overflow: hidden;
-  height: 38px; 
 }
 
 .number-input {
@@ -45,28 +44,25 @@
   font-weight: bold;
   font-size: 1rem;
   outline: none;
-  height: 100%; 
 }
 
 .spinner-col {
   display: flex;
   flex-direction: column;
   border-left: 1px solid var(--accent-pink);
-  height: 100%;
 }
 
 .spin-btn {
   background: var(--bg-secondary);
   border: none;
   cursor: pointer;
-  height: 50%; 
-  width: 24px; 
+  height: 14px;
+  width: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
   color: var(--accent-pink);
   transition: background 0.2s;
-  padding: 0;
 }
 
 .spin-btn:hover {
@@ -79,17 +75,28 @@
 }
 
 .spin-btn svg {
-  width: 14px; 
-  height: 14px; 
+  width: 10px;
+  height: 10px;
   fill: currentColor;
 }
 
+.double-slider-wrapper input[type=range]::-webkit-slider-runnable-track {
+  background: transparent !important;
+  border: none !important;
+  height: 0 !important;
+}
+
+.double-slider-wrapper input[type=range]::-moz-range-track {
+  background: transparent !important;
+  border: none !important;
+  height: 0 !important;
+}
 
 .slider-track {
   position: absolute;
   border-radius: 3px;
   height: 8px;
-  background-color: var(--bg-primary); 
+  background-color: var(--bg-card);
   border: 1px solid var(--border-color);
   width: 100%;
   z-index: 1;
@@ -101,30 +108,29 @@
   position: absolute;
   border-radius: 3px;
   height: 8px;
-  background-color: var(--accent-pink); 
+  background-color: var(--bg-primary); 
   z-index: 2;
   top: 50%;
   transform: translateY(-50%);
+  border: 2px solid var(--accent-pink);
 }
 
 .thumb {
   -webkit-appearance: none;
-  -webkit-tap-highlight-color: transparent;
   pointer-events: none; 
   position: absolute;
   height: 0;
   width: 100%; 
   outline: none;
   z-index: 3;
-  top: 50%;
+  top: 30%;
   transform: translateY(-50%);
   margin: 0;
 }
 
 .thumb::-webkit-slider-thumb {
   -webkit-appearance: none;
-  -webkit-tap-highlight-color: transparent;
-  background-color: var(--accent-pink);
+  background-color: var(--accent-pink); 
   border: 2px solid white;
   border-radius: 50%;
   box-shadow: 0 0 1px 1px #ced4da;

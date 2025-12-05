@@ -77,7 +77,6 @@ const DoubleRangeSlider = ({ min, max, onChange, title, step = 1, initialMin, in
     }
   };
 
-
   const handleMinSliderChange = (event) => {
     const value = Math.min(Number(event.target.value), maxVal - step);
     setMinVal(value);
