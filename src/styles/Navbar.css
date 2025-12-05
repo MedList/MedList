@@ -16,7 +16,7 @@ nav {
   font-family: Arial, "Helvetica Neue", sans-serif;
   font-size: 1.5rem;   
   font-weight: bold;
-  color: var(--bg-primary);
+  color: var(--text-primary);
   text-decoration: none;
   cursor: pointer;
   background-color: var(--accent-pink);
