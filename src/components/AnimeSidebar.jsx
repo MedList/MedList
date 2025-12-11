@@ -16,6 +16,7 @@ function AnimeSidebar({
   ageFilter,
   onAgeFilterChange
 }) {
+  
   return (
     <div className="sidebar-container">
       <input 
