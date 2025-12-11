@@ -3,7 +3,7 @@ import '../styles/Header.css';
 import ThemeToggle from './ThemeToggle'; 
 import ColorThemeSelector from './ColorThemeSelector'; 
 
-import logo from '/vite.svg'; 
+import logo from '/backdrop1.svg'; 
 import ad from '/unnamed.jpg'; 
 
 function Header() {

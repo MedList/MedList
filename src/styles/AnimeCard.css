@@ -122,7 +122,7 @@
   stroke: var(--text-primary);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   .anime-card-horizontal {
     flex-direction: column; 
     height: auto; 

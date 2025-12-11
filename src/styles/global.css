@@ -1,11 +1,14 @@
 html, body {
   margin: 0;
   padding: 0;
-  color: var(--text-primary); 
+  color: var(--text-primary);
+  height: 100%;
+  z-index: 3;
 }
 
 html {
-  background: var(--bg-primary); 
+  background-color: var(--bg-gradient);
+  background-attachment: fixed;
 }
 
 *, *::before, *::after {
@@ -15,10 +18,14 @@ html {
 
 #root {
   min-height: 100vh;
+  background-color: var(--bg-gradient);
 }
 
 .app-wrapper {
-  border: 1rem solid var(--border-color); 
-  min-height: 100vh; 
+    min-height: 100vh; 
   transition: border-color 0.3s ease;
+  background-color: var(--bg-gradient);
+  margin: 1%;
+  box-shadow: -1px 5px 24px 0px  var(--accent-pink);
+  z-index: 1;
 }

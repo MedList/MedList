@@ -45,7 +45,7 @@
   text-align: center;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 1000px) {
   .tabs-container {
     flex-wrap: wrap; 
     justify-content: center;
