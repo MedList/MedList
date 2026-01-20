@@ -20,4 +20,4 @@ class TitleUpdate(BaseModel):
     genres: Optional[str] = None
     averageRating: Optional[float] = None
     numVotes: Optional[int] = None
-    imdb_url: Optional[str] = None
+    imdbUrl: Optional[str] = None

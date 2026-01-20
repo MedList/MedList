@@ -9,7 +9,7 @@ router = APIRouter(tags=["titles"])
 #Functions to get all data from specific media type(To be used in media homepage's)
 
 @router.get("/anime")
-def getAnime(skip: int = 0, limit: int = 10):
+def getAnime(skip: int = 0, limit: int = 300):
     try:
         conn = get_db_connection()
         cursor = conn.cursor()
@@ -35,7 +35,7 @@ def getAnime(skip: int = 0, limit: int = 10):
         raise HTTPException(status_code=500, detail=str(e))
 
 @router.get("/movies")
-def getMovies(skip: int = 0, limit: int = 10):
+def getMovies(skip: int = 0, limit: int = 300):
     try:
         conn = get_db_connection()
         cursor = conn.cursor()
@@ -61,7 +61,7 @@ def getMovies(skip: int = 0, limit: int = 10):
         raise HTTPException(status_code=500, detail=str(e))
 
 @router.get("/shows")
-def getShows(skip: int = 0, limit: int = 10):
+def getShows(skip: int = 0, limit: int = 300):
     try:
         conn = get_db_connection()
         cursor = conn.cursor()
