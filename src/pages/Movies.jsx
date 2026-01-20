@@ -1,47 +1,93 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import AnimeCard from '../components/AnimeCard';
 import AnimeSidebar from '../components/AnimeSidebar';
-import { movieData, animeData } from '../data';
 import '../styles/AnimePage.css';
 
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:8000";
+
 function Movies() {
+  const [movieData, setMovieData] = useState([]);
+  const [animeData, setAnimeData] = useState([]);
+  const [filteredMovies, setFilteredMovies] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedGenre, setSelectedGenre] = useState("All");
   const [sortOption, setSortOption] = useState("default");
-  
   const [ratingRange, setRatingRange] = useState({ min: 0, max: 10 });
   const [yearRange, setYearRange] = useState({ min: 1980, max: 2024 });
 
-  const uniqueGenres = [...new Set(movieData.map(item => item.genre))];
+  useEffect(() => {
+    fetchData();
+  }, []);
 
-  const filteredMovies = movieData.filter(item => {
-    const searchMatch = item.title.toLowerCase().includes(searchQuery.toLowerCase());
-    const genreMatch = selectedGenre === "All" || item.genre === selectedGenre;
-    
-    const ratingValue = parseFloat(item.rating);
-    const ratingMatch = ratingValue >= ratingRange.min && ratingValue <= ratingRange.max;
-    const yearMatch = item.releaseYear >= yearRange.min && item.releaseYear <= yearRange.max;
+  const fetchData = async () => {
+    try {
+      setLoading(true);
+      const [moviesRes, animeRes] = await Promise.all([
+        fetch(`${API_URL}/movies?limit=500`),
+        fetch(`${API_URL}/anime?limit=100`)
+      ]);
 
-    return searchMatch && genreMatch && ratingMatch && yearMatch;
-  });
+      const moviesResult = await moviesRes.json();
+      const animeResult = await animeRes.json();
+
+      setMovieData(moviesResult.data || []);
+      setAnimeData(animeResult.data || []);
+      setError(null);
+    } catch (err) {
+      console.error('Failed to fetch data:', err);
+      setError('Failed to load data from server');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    const filtered = movieData.filter(item => {
+      const searchMatch = item.primaryTitle.toLowerCase().includes(searchQuery.toLowerCase());
+      const genreMatch = selectedGenre === "All" || (item.genres && item.genres.includes(selectedGenre));
+      const ratingMatch = item.averageRating >= ratingRange.min && item.averageRating <= ratingRange.max;
+      const yearMatch = item.startYear >= yearRange.min && item.startYear <= yearRange.max;
+
+      return searchMatch && genreMatch && ratingMatch && yearMatch;
+    });
+
+    setFilteredMovies(filtered);
+  }, [movieData, searchQuery, selectedGenre, ratingRange, yearRange]);
 
   const sortedMovies = [...filteredMovies].sort((a, b) => {
     switch (sortOption) {
-      case "rating-desc": return parseFloat(b.rating) - parseFloat(a.rating);
-      case "rating-asc": return parseFloat(a.rating) - parseFloat(b.rating);
-      case "year-desc": return b.releaseYear - a.releaseYear;
-      case "year-asc": return a.releaseYear - b.releaseYear;
+      case "rating-desc": return (b.averageRating || 0) - (a.averageRating || 0);
+      case "rating-asc": return (a.averageRating || 0) - (b.averageRating || 0);
+      case "year-desc": return b.startYear - a.startYear;
+      case "year-asc": return a.startYear - b.startYear;
       default: return 0;
     }
   });
 
-  const popularAnimeList = [...animeData].sort((a, b) => parseFloat(b.rating) - parseFloat(a.rating)).slice(0, 5);
-  const popularMovieList = [...movieData].sort((a, b) => parseFloat(b.rating) - parseFloat(a.rating)).slice(0, 5);
+  const uniqueGenres = [...new Set(
+    movieData
+      .flatMap(item => item.genres ? item.genres.split(',') : [])
+      .filter(Boolean)
+  )];
+
+  const popularAnimeList = [...animeData]
+    .sort((a, b) => (b.averageRating || 0) - (a.averageRating || 0))
+    .slice(0, 5);
+
+  const popularMovieList = [...movieData]
+    .sort((a, b) => (b.averageRating || 0) - (a.averageRating || 0))
+    .slice(0, 5);
+
+  if (loading) return <div style={{color: 'var(--text-primary)', padding: '20px'}}>Loading movie data...</div>;
+  if (error) return <div style={{color: 'red', padding: '20px'}}>{error}</div>;
 
   return (
     <div className="anime-page-container">
       <AnimeSidebar 
-        popularAnime={popularAnimeList} 
+        popularAnime={popularAnimeList}
         popularMovies={popularMovieList}
         uniqueGenres={uniqueGenres}
         searchQuery={searchQuery}
@@ -54,9 +100,22 @@ function Movies() {
 
       <div className="anime-list-container">
         {sortedMovies.map((item) => (
-          <AnimeCard key={item.id} item={item} category="movies" />
+          <AnimeCard 
+            key={item.tconst}
+            item={{
+              id: item.tconst,
+              title: item.primaryTitle,
+              genre: item.genres,
+              releaseYear: item.startYear,
+              rating: item.averageRating,
+              numVotes: item.numVotes,
+              imageUrl: item.imdb_url,
+              description: item.titleType
+            }}
+            category="movies" 
+          />
         ))}
-        {sortedMovies.length === 0 && <h2 style={{color: 'white'}}>No movies found matching these filters.</h2>}
+        {sortedMovies.length === 0 && <h2 style={{color: 'var(--text-primary)'}}>No movies found matching these filters.</h2>}
       </div>
     </div>
   );

@@ -11,13 +11,18 @@ function MediaCard({ item, category }) {
   
   const cardRef = useRef(null);
   const navigate = useNavigate();
-  const { isFavorite } = useFavorites(); 
+  const { isFavorite, toggleFavorite } = useFavorites(); 
 
   const safeCategory = category || 'anime';
   const isSaved = isFavorite(item.id, safeCategory);
 
   const handleClick = () => {
     navigate(`/details/${safeCategory}/${item.id}`);
+  };
+
+  const handleSave = (e) => {
+    e.stopPropagation();
+    toggleFavorite(item, safeCategory);
   };
 
   const handleMouseEnter = () => {
@@ -89,9 +94,13 @@ function MediaCard({ item, category }) {
           </div>
         </div>
 
-        {isSaved && (
-           <div className="desktop-saved-badge">★</div>
-        )}
+        <button 
+          className="media-save-btn"
+          onClick={handleSave}
+          title={isSaved ? 'Remove from saved' : 'Add to saved'}
+        >
+          {isSaved ? '♥' : '♡'}
+        </button>
       </div>
 
       {coords && createPortal(popupContent, document.body)}

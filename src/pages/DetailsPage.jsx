@@ -4,53 +4,64 @@ import MediaCard from '../components/MediaCard';
 import StarRating from '../components/StarRating';
 import '../styles/DetailsPage.css';
 
-import { animeData, movieData, showData } from '../data'; 
+// Use the API URL .env
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:8000";
 
 const DetailsPage = () => {
-  const { category, id } = useParams();
+  const { category, id } = useParams(); // id = 'tconst'
   const navigate = useNavigate();
   
   const [item, setItem] = useState(null);
   const [recommendations, setRecommendations] = useState([]);
-
-  const getAllItems = () => {
-    switch (category) {
-      case 'movies': return movieData;
-      case 'shows': return showData;
-      case 'anime': 
-      default: return animeData;
-    }
-  };
-
-  const allItems = getAllItems();
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const foundItem = allItems.find((i) => i.id.toString() === id);
-    
-    if (foundItem) {
-      setItem(foundItem);
-      
-      const currentRating = Number(foundItem.rating);
+    const fetchDetails = async () => {
+      try {
+        setLoading(true);
+        const response = await fetch(`${API_URL}/${category}/${id}`);
+        const data = await response.json();
 
-      const recs = allItems
-        .filter(media => {
-          const mediaRating = Number(media.rating);
+        if (data) {
+          const mappedItem = {
+            id: data.tconst,
+            title: data.primaryTitle,
+            genre: data.genres,
+            releaseYear: data.startYear,
+            rating: data.averageRating,
+            description: data.titleType,
+            imageUrl: data.imdbUrl
+          };
+          setItem(mappedItem);
+
+          const recResponse = await fetch(`${API_URL}/${category}/search?genre=${data.genres}&minRating=${data.averageRating - 2}`);
+          const recData = await recResponse.json();
           
-          return (
-            media.genre === foundItem.genre &&         
-            media.id !== foundItem.id &&               
-            mediaRating >= (currentRating - 2)
-          );
-        })
-        .sort((a, b) => Number(b.rating) - Number(a.rating)) 
-        .slice(0, 4); 
-      setRecommendations(recs);
-    }
-    
-    window.scrollTo(0, 0);
-  }, [id, category, allItems]);
+          const filteredRecs = (recData.data || [])
+            .filter(r => r.tconst !== id)
+            .slice(0, 4)
+            .map(r => ({
+              id: r.tconst,
+              title: r.primaryTitle,
+              imageUrl: r.imdb_url,
+              rating: r.averageRating
+            }));
 
-  if (!item) return <div className="details-container">Loading...</div>;
+          setRecommendations(filteredRecs);
+        }
+      } catch (err) {
+        console.error("Error fetching details:", err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchDetails();
+    window.scrollTo(0, 0);
+  }, [id, category]);
+
+  if (loading) return <div className="details-container">Loading details from AWS...</div>;
+  if (!item) return <div className="details-container">Title not found.</div>;
 
   return (
     <div className="details-container">
@@ -93,18 +104,10 @@ const DetailsPage = () => {
               <MediaCard 
                 key={recItem.id} 
                 item={recItem} 
-                category={category || 'anime'} 
+                category={category} 
               />
             ))}
           </div>
-        </div>
-      )}
-      
-      {recommendations.length === 0 && (
-        <div className="recommendations-container">
-          <p style={{ color: 'var(--text-secondary)', fontStyle: 'italic' }}>
-            No similar titles found (rated higher than {currentRating - 2}).
-          </p>
         </div>
       )}
     </div>
