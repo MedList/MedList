@@ -2,6 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from database import check_connection
 from routes import titles, search
+from routes.tmdbScrape import router as images_router
 
 # Create the FastAPI application
 app = FastAPI(
@@ -33,8 +34,9 @@ def root():
     }
 
 # Include routers
-app.include_router(titles.router)
 app.include_router(search.router)
+app.include_router(titles.router)
+app.include_router(images_router)
 
 if __name__ == "__main__":
     import uvicorn

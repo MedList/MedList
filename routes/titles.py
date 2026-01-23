@@ -9,7 +9,7 @@ router = APIRouter(tags=["titles"])
 #Functions to get all data from specific media type(To be used in media homepage's)
 
 @router.get("/anime")
-def getAnime(skip: int = 0, limit: int = 300):
+def getAnime(skip: int = 0, limit: int = 20, sort: str = None, order: str = "desc"):
     try:
         conn = get_db_connection()
         cursor = conn.cursor()
@@ -17,12 +17,15 @@ def getAnime(skip: int = 0, limit: int = 300):
         cursor.execute("SELECT COUNT(*) as total FROM anime_data")
         total = cursor.fetchone()['total']
         
-        query = "SELECT * FROM anime_data LIMIT %s OFFSET %s"
+        order_clause = ""
+        if sort in ["rating", "year", "votes"]:
+            sort_column = {"rating": "averageRating", "year": "startYear", "votes": "numVotes"}[sort]
+            order_dir = "ASC" if order == "asc" else "DESC"
+            order_clause = f" ORDER BY {sort_column} {order_dir}"
+        
+        query = f"SELECT * FROM anime_data{order_clause} LIMIT %s OFFSET %s"
         cursor.execute(query, (limit, skip))
         data = cursor.fetchall()
-        
-        cursor.close()
-        conn.close()
         
         return {
             "type": "anime",
@@ -33,9 +36,14 @@ def getAnime(skip: int = 0, limit: int = 300):
         }
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+    finally:
+        if cursor:
+            cursor.close()
+        if conn:
+            conn.close()
 
 @router.get("/movies")
-def getMovies(skip: int = 0, limit: int = 300):
+def getMovies(skip: int = 0, limit: int = 20, sort: str = None, order: str = "desc"):
     try:
         conn = get_db_connection()
         cursor = conn.cursor()
@@ -43,12 +51,15 @@ def getMovies(skip: int = 0, limit: int = 300):
         cursor.execute("SELECT COUNT(*) as total FROM movies_data")
         total = cursor.fetchone()['total']
         
-        query = "SELECT * FROM movies_data LIMIT %s OFFSET %s"
+        order_clause = ""
+        if sort in ["rating", "year", "votes"]:
+            sort_column = {"rating": "averageRating", "year": "startYear", "votes": "numVotes"}[sort]
+            order_dir = "ASC" if order == "asc" else "DESC"
+            order_clause = f" ORDER BY {sort_column} {order_dir}"
+        
+        query = f"SELECT * FROM movies_data{order_clause} LIMIT %s OFFSET %s"
         cursor.execute(query, (limit, skip))
         data = cursor.fetchall()
-        
-        cursor.close()
-        conn.close()
         
         return {
             "type": "movies",
@@ -59,9 +70,14 @@ def getMovies(skip: int = 0, limit: int = 300):
         }
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+    finally:
+        if cursor:
+            cursor.close()
+        if conn:
+            conn.close()
 
 @router.get("/shows")
-def getShows(skip: int = 0, limit: int = 300):
+def getShows(skip: int = 0, limit: int = 20, sort: str = None, order: str = "desc"):
     try:
         conn = get_db_connection()
         cursor = conn.cursor()
@@ -69,12 +85,15 @@ def getShows(skip: int = 0, limit: int = 300):
         cursor.execute("SELECT COUNT(*) as total FROM shows_data")
         total = cursor.fetchone()['total']
         
-        query = "SELECT * FROM shows_data LIMIT %s OFFSET %s"
+        order_clause = ""
+        if sort in ["rating", "year", "votes"]:
+            sort_column = {"rating": "averageRating", "year": "startYear", "votes": "numVotes"}[sort]
+            order_dir = "ASC" if order == "asc" else "DESC"
+            order_clause = f" ORDER BY {sort_column} {order_dir}"
+        
+        query = f"SELECT * FROM shows_data{order_clause} LIMIT %s OFFSET %s"
         cursor.execute(query, (limit, skip))
         data = cursor.fetchall()
-        
-        cursor.close()
-        conn.close()
         
         return {
             "type": "shows",
@@ -85,6 +104,11 @@ def getShows(skip: int = 0, limit: int = 300):
         }
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+    finally:
+        if cursor:
+            cursor.close()
+        if conn:
+            conn.close()
 
 #Function to get data of a specific title (to be used to fetch in detail page)
 
@@ -98,15 +122,19 @@ def getAnimeByTconst(tconst: str):
         cursor.execute(query, (tconst,))
         result = cursor.fetchone()
         
-        cursor.close()
-        conn.close()
-        
         if not result:
             raise HTTPException(status_code=404, detail="Anime not found")
         
         return result
+    except HTTPException:
+        raise
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+    finally:
+        if cursor:
+            cursor.close()
+        if conn:
+            conn.close()
 
 @router.get("/movies/{tconst}")
 def getMovieByTconst(tconst: str):
@@ -118,15 +146,19 @@ def getMovieByTconst(tconst: str):
         cursor.execute(query, (tconst,))
         result = cursor.fetchone()
         
-        cursor.close()
-        conn.close()
-        
         if not result:
             raise HTTPException(status_code=404, detail="Movie not found")
         
         return result
+    except HTTPException:
+        raise
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+    finally:
+        if cursor:
+            cursor.close()
+        if conn:
+            conn.close()
 
 @router.get("/shows/{tconst}")
 def getShowByTconst(tconst: str):
@@ -138,15 +170,19 @@ def getShowByTconst(tconst: str):
         cursor.execute(query, (tconst,))
         result = cursor.fetchone()
         
-        cursor.close()
-        conn.close()
-        
         if not result:
             raise HTTPException(status_code=404, detail="Show not found")
         
         return result
+    except HTTPException:
+        raise
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+    finally:
+        if cursor:
+            cursor.close()
+        if conn:
+            conn.close()
 
 @router.put("/anime/{tconst}")
 def updateAnime(tconst: str, updates: TitleUpdate):
@@ -166,22 +202,24 @@ def updateAnime(tconst: str, updates: TitleUpdate):
         conn.commit()
         
         if cursor.rowcount == 0:
-            cursor.close()
-            conn.close()
             raise HTTPException(status_code=404, detail="Anime not found")
         
         cursor.execute("SELECT * FROM anime_data WHERE tconst = %s", (tconst,))
         updated = cursor.fetchone()
         
-        cursor.close()
-        conn.close()
-        
         return {
             "message": "Anime updated successfully",
             "data": updated
         }
+    except HTTPException:
+        raise
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+    finally:
+        if cursor:
+            cursor.close()
+        if conn:
+            conn.close()
 
 @router.put("/movies/{tconst}")
 def updateMovie(tconst: str, updates: TitleUpdate):
@@ -201,22 +239,24 @@ def updateMovie(tconst: str, updates: TitleUpdate):
         conn.commit()
         
         if cursor.rowcount == 0:
-            cursor.close()
-            conn.close()
             raise HTTPException(status_code=404, detail="Movie not found")
         
         cursor.execute("SELECT * FROM movies_data WHERE tconst = %s", (tconst,))
         updated = cursor.fetchone()
         
-        cursor.close()
-        conn.close()
-        
         return {
             "message": "Movie updated successfully",
             "data": updated
         }
+    except HTTPException:
+        raise
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+    finally:
+        if cursor:
+            cursor.close()
+        if conn:
+            conn.close()
 
 @router.put("/shows/{tconst}")
 def updateShow(tconst: str, updates: TitleUpdate):
@@ -236,19 +276,21 @@ def updateShow(tconst: str, updates: TitleUpdate):
         conn.commit()
         
         if cursor.rowcount == 0:
-            cursor.close()
-            conn.close()
             raise HTTPException(status_code=404, detail="Show not found")
         
         cursor.execute("SELECT * FROM shows_data WHERE tconst = %s", (tconst,))
         updated = cursor.fetchone()
         
-        cursor.close()
-        conn.close()
-        
         return {
             "message": "Show updated successfully",
             "data": updated
         }
+    except HTTPException:
+        raise
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+    finally:
+        if cursor:
+            cursor.close()
+        if conn:
+            conn.close()
