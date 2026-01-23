@@ -22,6 +22,8 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  position: relative;
+  z-index: 1;
 }
 
 .desktop-saved-badge {
@@ -30,6 +32,7 @@
   right: 5px; 
   color: var(--accent-pink);
   font-size: 1.5rem;
+  z-index: 10;
 }
 
 .media-mobile-info {
@@ -101,6 +104,59 @@
   to { opacity: 1; }
 }
 
+/* Loading placeholder */
+.media-card-placeholder {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #2a2a2a 0%, #3a3a3a 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #888;
+  font-size: 0.9rem;
+  border-radius: inherit;
+  z-index: 2;
+}
+
+/* Save button styling */
+.media-save-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  z-index: 100;
+  backdrop-filter: blur(4px);
+}
+
+.media-save-btn:hover {
+  background: rgba(0, 0, 0, 0.8);
+  transform: scale(1.1);
+}
+
+.media-save-btn.saved {
+  color: var(--accent-pink, #ff6b9d);
+  background: rgba(255, 107, 157, 0.2);
+}
+
+.media-save-btn.saved:hover {
+  background: rgba(255, 107, 157, 0.4);
+}
+
+/* Mobile styles */
 @media (max-width: 1000px) {
   .media-popover {
     display: none !important;
@@ -119,6 +175,7 @@
     background: linear-gradient(to top, rgba(0,0,0,0.95), transparent);
     color: white;
     pointer-events: none;
+    z-index: 5;
   }
 
   .mobile-title {
