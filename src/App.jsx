@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 
 import HomePage from './pages/Home.jsx'; 
@@ -10,20 +10,15 @@ import FavoritesPage from './pages/FavoritesPage.jsx';
 
 import Navbar from './components/Navbar';
 import Header from './components/Header';
-import Loader from './components/Loader'; 
+import Loader from './components/Loader';
+import { useLoading } from './context/LoadingProvider';
 
 function App() {
-  const [loading, setLoading] = useState(false);
+  const { isLoading, startLoading } = useLoading();
   const location = useLocation(); 
 
   useEffect(() => {
-    setLoading(true);
-
-    const timer = setTimeout(() => {
-      setLoading(false);
-    }, 800);
-
-    return () => clearTimeout(timer);
+    startLoading();
   }, [location]); 
 
   return (
@@ -31,7 +26,7 @@ function App() {
       <Header />
       <Navbar />
       <main>
-        {loading ? (
+        {isLoading ? (
           <Loader />
         ) : (
           <Routes>

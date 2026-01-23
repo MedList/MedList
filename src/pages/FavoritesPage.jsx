@@ -1,12 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useFavorites } from '../context/FavoritesContext';
 import AnimeCard from '../components/AnimeCard';
+import { useLoading } from '../context/LoadingProvider';
 import '../styles/AnimePage.css'; 
 import '../styles/FavoritesPage.css';
 
 function FavoritesPage() {
   const { favorites } = useFavorites();
+  const { stopLoading } = useLoading();
   const [activeTab, setActiveTab] = useState('all');
+
+  useEffect(() => {
+    stopLoading();
+  }, [stopLoading]);
 
   const filteredFavorites = favorites.filter(item => {
     if (activeTab === 'all') return true;
