@@ -2,6 +2,6 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: ["frontend"]
+    branches: ["backend"]
 
   workflow_dispatch:
