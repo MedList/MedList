@@ -1,6 +1,6 @@
 import requests
 from fastapi import APIRouter, HTTPException
-from config import TMDB_API_KEY
+from config import TMDB_API_KEY, OMDB_API_KEY
 import time
 
 router = APIRouter(prefix="/images", tags=["images"])
@@ -75,6 +75,20 @@ def get_tmdb_id_from_imdb(imdb_id):
     return None, None
 
 
+def get_omdb_data(imdb_id):
+    """Get poster and plot from OMDB as fallback"""
+    try:
+        response = requests.get(f"http://www.omdbapi.com/?i={imdb_id}&apikey={OMDB_API_KEY}", timeout=TIMEOUT)
+        if response.ok:
+            data = response.json()
+            if data.get("Response") == "True":
+                poster = data.get("Poster")
+                return (None if poster == "N/A" else poster), data.get("Plot")
+    except:
+        pass
+    return None, None
+
+
 @router.get("/details/{tconst}")
 def getDetails(tconst: str):
     """Get overview, posterUrl, and trailerUrl from TMDB"""
@@ -84,37 +98,40 @@ def getDetails(tconst: str):
         if cached:
             return cached
         
-        tmdb_id, media_type = get_tmdb_id_from_imdb(tconst)
-        if tmdb_id is None:
-            raise HTTPException(status_code=404, detail="Title not found on TMDB")
-        
-        # Get details with videos
-        url = f"https://api.themoviedb.org/3/{media_type}/{tmdb_id}"
-        params = {
-            "api_key": TMDB_API_KEY,
-            "append_to_response": "videos"
-        }
-        
-        data = make_request_with_retry(url, params)
-        if not data:
-            raise HTTPException(status_code=404, detail="Failed to fetch from TMDB")
-        
-        # Get poster URL with original size
         poster_url = None
-        if data.get("poster_path"):
-            poster_url = f"https://image.tmdb.org/t/p/original{data['poster_path']}"
-        
-        # Get trailer URL
+        overview = None
         trailer_url = None
-        if data.get("videos", {}).get("results"):
-            for video in data["videos"]["results"]:
-                if video.get("site") == "YouTube" and video.get("type") in ["Trailer", "Teaser"]:
-                    trailer_url = f"https://www.youtube.com/watch?v={video['key']}"
-                    break
+        
+        tmdb_id, media_type = get_tmdb_id_from_imdb(tconst)
+        if tmdb_id:
+            # Get details with videos
+            url = f"https://api.themoviedb.org/3/{media_type}/{tmdb_id}"
+            params = {"api_key": TMDB_API_KEY, "append_to_response": "videos"}
+            
+            data = make_request_with_retry(url, params)
+            if data:
+                overview = data.get("overview")
+                if data.get("poster_path"):
+                    poster_url = f"https://image.tmdb.org/t/p/original{data['poster_path']}"
+                
+                if data.get("videos", {}).get("results"):
+                    for video in data["videos"]["results"]:
+                        if video.get("site") == "YouTube" and video.get("type") in ["Trailer", "Teaser"]:
+                            trailer_url = f"https://www.youtube.com/watch?v={video['key']}"
+                            break
+
+        # Fallback to OMDB if TMDB data is missing
+        if not poster_url or not overview:
+            omdb_poster, omdb_plot = get_omdb_data(tconst)
+            poster_url = poster_url or omdb_poster
+            overview = overview or omdb_plot
+
+        if not poster_url and not overview:
+            raise HTTPException(status_code=404, detail="Title details not found")
         
         result = {
             "tconst": tconst,
-            "overview": data.get("overview"),
+            "overview": overview,
             "posterUrl": poster_url,
             "trailerUrl": trailer_url
         }

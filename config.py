@@ -1,6 +1,7 @@
 import os
 
 TMDB_API_KEY = os.getenv('TMDB_API_KEY', '9f44b8813e2acbb2bd638d8698b5b7b4')
+OMDB_API_KEY = os.getenv('OMDB_API_KEY', '59b204c7')
 
 # Connecting to the database in AWS using RDS
 DB_CONFIG = {

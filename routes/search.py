@@ -67,7 +67,9 @@ def searchAnime(
         cursor.execute(count_query, params)
         total_results = cursor.fetchone()['total']
                 
-        if sort in ["rating", "year", "votes"]:
+        if sort == "popularity":
+            base_query += " ORDER BY (numVotes * averageRating) DESC"
+        elif sort in ["rating", "year", "votes"]:
             sort_column = {"rating": "averageRating", "year": "startYear", "votes": "numVotes"}[sort]
             order_dir = "ASC" if order == "asc" else "DESC"
             base_query += f" ORDER BY {sort_column} {order_dir}"
@@ -161,7 +163,9 @@ def searchMovies(
         cursor.execute(count_query, params)
         total_results = cursor.fetchone()['total']
         
-        if sort in ["rating", "year", "votes"]:
+        if sort == "popularity":
+            base_query += " ORDER BY (numVotes * averageRating) DESC"
+        elif sort in ["rating", "year", "votes"]:
             sort_column = {"rating": "averageRating", "year": "startYear", "votes": "numVotes"}[sort]
             order_dir = "ASC" if order == "asc" else "DESC"
             base_query += f" ORDER BY {sort_column} {order_dir}"
@@ -253,7 +257,9 @@ def searchShows(
         cursor.execute(count_query, params)
         total_results = cursor.fetchone()['total']
         
-        if sort in ["rating", "year", "votes"]:
+        if sort == "popularity":
+            base_query += " ORDER BY (numVotes * averageRating) / (2026 - startYear + 2) DESC"
+        elif sort in ["rating", "year", "votes"]:
             sort_column = {"rating": "averageRating", "year": "startYear", "votes": "numVotes"}[sort]
             order_dir = "ASC" if order == "asc" else "DESC"
             base_query += f" ORDER BY {sort_column} {order_dir}"

@@ -1,7 +1,0 @@
-name: Deploy to GitHub Pages
-
-on:
-  push:
-    branches: ["backend"]
-
-  workflow_dispatch:
