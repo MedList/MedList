@@ -35,6 +35,7 @@ function AnimeSidebar({
           <option value="rating-asc">Lowest Rating</option>
           <option value="year-desc">Newest First</option>
           <option value="year-asc">Oldest First</option>
+          <option value="popularity">Most Popular</option>
         </select>
       </div>
 

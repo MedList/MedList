@@ -117,7 +117,7 @@ function AnimeCard({ item, category }) {
           )}
         </div>
 
-        <p className="anime-card-description">{item.description}</p>
+        <p className="anime-card-description"></p>
         
         <div className="anime-card-bottom-row">
           <div className="anime-rating-container">

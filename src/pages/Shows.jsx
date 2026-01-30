@@ -4,7 +4,7 @@ import AnimeSidebar from '../components/AnimeSidebar';
 import '../styles/AnimePage.css';
 import { useLoading } from '../context/LoadingProvider';
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+const API_URL = import.meta.env.VITE_API_URL;
 const ITEMS_PER_PAGE = 20;
 
 function Shows() {
@@ -17,7 +17,7 @@ function Shows() {
 
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedGenre, setSelectedGenre] = useState("All");
-  const [sortOption, setSortOption] = useState("year-desc");
+  const [sortOption, setSortOption] = useState("popularity");
   const [ratingRange, setRatingRange] = useState({ min: 0, max: 10 });
   const [yearRange, setYearRange] = useState({ min: 1980, max: 2024 });
 
@@ -80,6 +80,7 @@ function Shows() {
     else if (sortOption === "rating-asc") url += `&sort=rating&order=asc`;
     else if (sortOption === "year-desc") url += `&sort=year&order=desc`;
     else if (sortOption === "year-asc") url += `&sort=year&order=asc`;
+    else if (sortOption === "popularity") url += `&sort=popularity&order=desc`;
     
     return url;
   }, [page, searchQuery, selectedGenre, ratingRange, yearRange, sortOption]);
@@ -140,7 +141,7 @@ function Shows() {
 
       <div className="anime-list-container">
         {loading ? (
-          <div style={{color: 'var(--text-primary)', padding: '20px'}}>Loading...</div>
+          <div style={{color: 'var(--text-primary)', padding: '20px'}}></div>
         ) : showData.length > 0 ? (
           showData.map((item) => (
             <AnimeCard 

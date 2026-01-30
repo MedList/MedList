@@ -7,7 +7,7 @@ import { useLoading } from '../context/LoadingProvider';
 import '../styles/DetailsPage.css';
 
 // Use the API URL .env
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+const API_URL = import.meta.env.VITE_API_URL;
 
 const DetailsPage = () => {
   const { category, id } = useParams(); // id = 'tconst'
